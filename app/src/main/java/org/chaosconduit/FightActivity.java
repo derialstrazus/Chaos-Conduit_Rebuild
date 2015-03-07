@@ -42,7 +42,7 @@ public class FightActivity extends ActionBarActivity {
         selfMana1.setText(Integer.toString(0));
         selfMana2.setText(Integer.toString(0));
         selfMana3.setText(Integer.toString(0));
-
+        firebase = new Firebase(getResources().getString(R.string.firebase));
         gamesRef = firebase.child("games");
         final String ID = getIntent().getStringExtra("ID");
         player = getIntent().getIntExtra("Player", 0);
