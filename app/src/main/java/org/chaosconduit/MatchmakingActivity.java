@@ -43,6 +43,7 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
     public void matchFound(String ID){
         Intent intent = new Intent(getBaseContext(), FightActivity.class);
         intent.putExtra("ID", ID);
+        intent.putExtra("Player", 2);
         startActivity(intent);
         finish();
     }

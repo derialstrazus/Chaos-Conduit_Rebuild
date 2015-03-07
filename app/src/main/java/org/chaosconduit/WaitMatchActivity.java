@@ -36,6 +36,7 @@ public class WaitMatchActivity extends ActionBarActivity {
                     Firebase newGame = gamesRef.child(ID);
 
                     intent.putExtra("ID", ID);
+                    intent.putExtra("Player", 1);
                     startActivity(intent);
                     finish();
                 }

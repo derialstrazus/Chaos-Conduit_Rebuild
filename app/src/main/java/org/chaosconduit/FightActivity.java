@@ -25,7 +25,8 @@ public class FightActivity extends ActionBarActivity {
     int permission = 1;     // 1 is permission allowed, 0 is not allowed, ie enemy turn.
     TextView enemyHealth;
     TextView selfMana1, selfMana2, selfMana3;
-    Firebase firebase;
+    Firebase firebase, gamesRef;
+    int player, enemy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +43,20 @@ public class FightActivity extends ActionBarActivity {
         selfMana2.setText(Integer.toString(0));
         selfMana3.setText(Integer.toString(0));
 
-        Firebase gamesRef = firebase.child("games");
+        gamesRef = firebase.child("games");
         final String ID = getIntent().getStringExtra("ID");
+        player = getIntent().getIntExtra("Player", 0);
+        if (player == 1) {
+            enemy = 2;
+        }
+        else {
+            enemy = 1;
+        }
+
         gamesRef.child(ID).child("turn").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue().toString().equals("1")) {
+                if (dataSnapshot.getValue().toString().equals(player)) {
                     permission = 1;
                     int mana1 = Integer.parseInt(selfMana1.getText().toString());
                     int mana2 = Integer.parseInt(selfMana2.getText().toString());
@@ -94,6 +103,7 @@ public class FightActivity extends ActionBarActivity {
                     //String send = Integer.toString(finalHP);
                     enemyHealth.setText(Integer.toString(finalHP));
                     permission = 0;
+                    gamesRef.child(ID).child("turn").setValue(enemy);
                 }
             }
         });
