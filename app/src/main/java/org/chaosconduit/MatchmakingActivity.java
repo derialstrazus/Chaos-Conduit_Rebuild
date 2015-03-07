@@ -40,12 +40,16 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
 
     }
 
-    public void matchFound(){
-        Toast.makeText(getBaseContext(),"Match Found!", Toast.LENGTH_SHORT).show();
+    public void matchFound(String ID){
+        Intent intent = new Intent(getBaseContext(), FightActivity.class);
+        intent.putExtra("ID", ID);
+        startActivity(intent);
+        finish();
     }
 
     public void matchNotFound(){
-        Toast.makeText(getBaseContext(),"Match Not Found!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(),"No matches found, try again later!", Toast.LENGTH_SHORT).show();
+
     }
 
     public void createNewMatch(){
@@ -57,21 +61,6 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
         intent.putExtra("ID", ID);
         startActivity(intent);
         finish();
-        /*gamesRef.child(ID).child("status").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                    Toast.makeText(getBaseContext(), dataSnapshot.getValue().toString(), Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getBaseContext(), WaitMatchActivity.class);
-                    intent.putExtra("ID", ID);
-                    startActivity(intent);
-                    finish();
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });*/
     }
 
 
@@ -88,7 +77,7 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
                     if (p2.equals("open")) {
                         gamesRef.child(ds.getKey()).child("player2").setValue(UID);
                         gamesRef.child(ds.getKey()).child("status").setValue("closed");
-                        matchFound();
+                        matchFound(gamesRef.child(ds.getKey()).toString());
                         return;
                     }
                 }

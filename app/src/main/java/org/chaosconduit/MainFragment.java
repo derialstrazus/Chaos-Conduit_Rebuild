@@ -17,24 +17,6 @@ import android.widget.Toast;
 public class MainFragment extends Fragment implements View.OnClickListener{
 
 
-    /*
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_old);
-        Button A = (Button) findViewById(R.id.button);
-        Button B = (Button) findViewById(R.id.button2);
-        B.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context c = getBaseContext();
-                Intent intent = new Intent(c, MatchmakingActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
-    }
-    */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

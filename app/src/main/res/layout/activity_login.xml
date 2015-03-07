@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent" android:background="#413838"
 
-    >
+    android:focusable="false">
 
     <!-- Log in form and buttons -->
     <LinearLayout
@@ -19,7 +19,8 @@
         android:orientation="vertical"
         android:id="@+id/loginFrame"
         android:animateLayoutChanges="true"
-        >
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
 
         <TextView
@@ -47,7 +48,7 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/emailEditText"
-                />
+                android:focusable="false" />
 
 
         <!-- Password form entry -->

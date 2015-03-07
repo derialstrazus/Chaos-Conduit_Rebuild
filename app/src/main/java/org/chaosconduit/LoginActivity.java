@@ -77,6 +77,9 @@ public class LoginActivity extends ActionBarActivity {
             }
         });
 
+        LinearLayout myLayout = (LinearLayout) findViewById(R.id.loginFrame);
+        myLayout.requestFocus();
+
     }
 
 
