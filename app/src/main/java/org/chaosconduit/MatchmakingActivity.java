@@ -81,7 +81,7 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
                     if (p2.equals("open")) {
                         gamesRef.child(ds.getKey()).child("player2").setValue(UID);
                         gamesRef.child(ds.getKey()).child("status").setValue("closed");
-                        matchFound(gamesRef.child(ds.getKey()).toString().replace(".",""));
+                        matchFound(gamesRef.child(ds.getKey()).getKey().toString().replace(".",""));
                         return;
                     }
                 }
