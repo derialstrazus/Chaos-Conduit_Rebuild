@@ -42,7 +42,7 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
     }
 
     public void matchFound(String ID){
-        Log.d("TESTING ID",ID);
+        Log.w("TESTING ID",ID);
         Intent intent = new Intent(getBaseContext(), FightActivity.class);
         intent.putExtra("ID", ID);
         intent.putExtra("Player", "2");
@@ -59,7 +59,7 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
         Firebase gamesRef = firebase.child("games");
         GameInfo gi = new GameInfo(UID);
         final String ID = gamesRef.push().getKey();//.setValue(gi.toMap());
-        Log.d("TESTING ID",ID);
+        Log.w("TESTING ID",ID);
         gamesRef.child(ID).setValue(gi.toMap());
         Intent intent = new Intent(getBaseContext(), WaitMatchActivity.class);
         intent.putExtra("ID", ID);
