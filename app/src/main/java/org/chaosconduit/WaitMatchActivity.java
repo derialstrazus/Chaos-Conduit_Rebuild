@@ -34,7 +34,8 @@ public class WaitMatchActivity extends ActionBarActivity {
                 if (dataSnapshot.getValue().toString().equals("closed")) {
                     Intent intent = new Intent(getBaseContext(), FightActivity.class);
                     Firebase newGame = gamesRef.child(ID);
-
+                    PlayerData p1 = new PlayerData();
+                    newGame.child("player1").setValue(p1.toMap());
                     intent.putExtra("ID", ID);
                     intent.putExtra("Player", "1");
                     startActivity(intent);
