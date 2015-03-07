@@ -5,4 +5,19 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="RedButton" >
+        <item name="android:textColor">#fff</item>
+        <item name="android:background">#ff0000</item>
+    </style>
+
+    <style name="YellowButton" >
+        <item name="android:textColor">#fff</item>
+        <item name="android:background">#fFc63e</item>
+    </style>
+
+    <style name="GreenButton" >
+        <item name="android:textColor">#fff</item>
+        <item name="android:background">#4ca64c</item>
+    </style>
+
 </resources>
