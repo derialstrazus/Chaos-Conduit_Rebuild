@@ -17,13 +17,12 @@ public class FightActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fight);
-        Button selfAttack = (Button) findViewById(R.id.buttonSelfAtk);
-        Button enemyAttack = (Button) findViewById(R.id.buttonEnemyAtk);
+        Button selfAttack = (Button) findViewById(R.id.buttonAttack);
+
         selfAttack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context c = getBaseContext();
-                TextView enemyHealth = (TextView) findViewById(R.id.textView6);
+                TextView enemyHealth = (TextView) findViewById(R.id.enemyHP);
                 int damage = 3;
                 int currentHP = Integer.parseInt(enemyHealth.getText().toString());
                 int finalHP = currentHP - damage;
