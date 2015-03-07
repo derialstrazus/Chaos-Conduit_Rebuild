@@ -40,6 +40,8 @@ public class MainFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View InputView = inflater.inflate(R.layout.activity_main_old, container, false);
+        Button A = (Button) InputView.findViewById(R.id.button);
+        A.setOnClickListener(this);
         Button B = (Button) InputView.findViewById(R.id.button2);
         B.setOnClickListener(this);
         return InputView;
@@ -48,15 +50,18 @@ public class MainFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        Context c;
+        Intent intent;
         switch (v.getId()) {
             case R.id.button2:
-                Context c = getActivity();
-                Intent intent = new Intent(c, FightActivity.class);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                c = getActivity();
+                intent = new Intent(c, FightActivity.class);
                 startActivity(intent);
                 break;
             case R.id.button:
-
+                c = getActivity();
+                intent = new Intent(c, MatchmakingActivity.class);
+                startActivity(intent);
                 break;
         }
     }

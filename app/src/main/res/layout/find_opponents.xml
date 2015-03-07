@@ -12,4 +12,20 @@
         android:textSize="20dp"
         android:layout_marginTop="100dp"
         android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Match"
+        android:id="@+id/create_match"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find Match"
+        android:id="@+id/find_match"
+        android:layout_gravity="center_horizontal" />
+
+
 </LinearLayout>
