@@ -44,6 +44,9 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
     public void matchFound(String ID){
         Log.w("TESTING ID",ID);
         Intent intent = new Intent(getBaseContext(), FightActivity.class);
+        Firebase newGame = firebase.child("games").child(ID);
+        PlayerData p2 = new PlayerData();
+        newGame.child("player2").setValue(p2.toMap());
         intent.putExtra("ID", ID);
         intent.putExtra("Player", "2");
         startActivity(intent);
