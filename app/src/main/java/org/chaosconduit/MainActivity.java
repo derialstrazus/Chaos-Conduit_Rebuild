@@ -22,9 +22,10 @@ public class MainActivity extends ActionBarActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context c = getApplicationContext();
+                Context c = getBaseContext();
                 Intent intent = new Intent(c, FindActivity.class);
-                c.startActivity(intent);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
     }
