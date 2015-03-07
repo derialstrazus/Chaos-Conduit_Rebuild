@@ -18,5 +18,6 @@
     <string name="title_activity_main">MainActivity</string>
 
     <string name="title_activity_fight">Blast him down!</string>
+    <string name="title_activity_wait_match">WaitMatchActivity</string>
 
 </resources>

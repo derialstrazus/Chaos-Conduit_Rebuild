@@ -48,7 +48,7 @@ public class MainActivity extends ActionBarActivity
         Fragment f = new MainFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, f);
-        transaction.addToBackStack(null);
+        //transaction.addToBackStack(null);
         transaction.commit();
 
     }

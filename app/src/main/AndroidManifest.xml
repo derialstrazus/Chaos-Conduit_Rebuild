@@ -9,12 +9,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
         <activity
             android:name=".FightActivity"
             android:label="@string/title_activity_fight" >
         </activity>
-
         <activity
             android:name=".MatchmakingActivity"
             android:label="@string/app_name" >
@@ -31,6 +29,10 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name=".WaitMatchActivity"
+            android:label="@string/title_activity_wait_match" >
         </activity>
     </application>
 

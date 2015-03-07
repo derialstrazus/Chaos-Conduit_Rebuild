@@ -2,6 +2,7 @@ package org.chaosconduit;
 
 import android.app.ActionBar;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -39,28 +40,59 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
 
     }
 
+    public void matchFound(){
+        Toast.makeText(getBaseContext(),"Match Found!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void matchNotFound(){
+        Toast.makeText(getBaseContext(),"Match Not Found!", Toast.LENGTH_SHORT).show();
+    }
+
     public void createNewMatch(){
         Firebase gamesRef = firebase.child("games");
         GameInfo gi = new GameInfo(UID);
-        gamesRef.push().setValue(gi.toMap());
+        final String ID = gamesRef.push().getKey();//.setValue(gi.toMap());
+        gamesRef.child(ID).setValue(gi.toMap());
+        Intent intent = new Intent(getBaseContext(), WaitMatchActivity.class);
+        intent.putExtra("ID", ID);
+        startActivity(intent);
+        finish();
+        /*gamesRef.child(ID).child("status").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                    Toast.makeText(getBaseContext(), dataSnapshot.getValue().toString(), Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getBaseContext(), WaitMatchActivity.class);
+                    intent.putExtra("ID", ID);
+                    startActivity(intent);
+                    finish();
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });*/
     }
 
+
     public void findMatch(){
-        found = false;
+
         final Firebase gamesRef = firebase.child("games");
         gamesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 Iterable<DataSnapshot> iterator = snapshot.getChildren();
+                found = false;
                 for (DataSnapshot ds : iterator) {
                     String p2 = ds.child("status").getValue().toString();
                     if (p2.equals("open")) {
                         gamesRef.child(ds.getKey()).child("player2").setValue(UID);
                         gamesRef.child(ds.getKey()).child("status").setValue("closed");
-                        found = true;
+                        matchFound();
                         return;
                     }
                 }
+                matchNotFound();
             }
 
             @Override
@@ -68,15 +100,13 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
 
             }
         });
-
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.find_match:
-                Toast.makeText(getBaseContext(),"Find Match",Toast.LENGTH_SHORT).show();
-                findMatch();
+                findMatch();;
                 break;
             case R.id.create_match:
                 createNewMatch();
