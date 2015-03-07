@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#3232ff"
+
+    >
+
+    <!-- Log in form and buttons -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="220dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:paddingBottom="32dp"
+        android:background="#9999ff"
+        android:orientation="vertical"
+        android:id="@+id/loginFrame"
+        android:animateLayoutChanges="true"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:text="Log In"
+            android:id="@+id/loginTitle"
+            android:layout_gravity="center_horizontal" />
+
+        <!-- user form entry -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Email:"
+                android:id="@+id/labelForEmail"
+                 />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/emailEditText"
+                />
+
+
+        <!-- Password form entry -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Password:"
+                android:id="@+id/labelForPassword"
+                 />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/passwordEditText"
+                android:inputType="textPassword"
+                />
+
+    </LinearLayout>
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/loginFrame"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"
+        android:gravity="center_horizontal"
+        android:showDividers="middle"
+        android:id="@+id/loginButtonsLayout"
+
+        >
+
+        <Button
+            style="@style/YellowButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:id="@+id/signUpButton"
+            android:nestedScrollingEnabled="false" />
+
+        <Button
+            style="@style/GreenButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="Log In"
+            android:id="@+id/logInButton" />
+
+    </LinearLayout>
+
+    <!-- Loading components -->
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginProgressBar"
+        android:layout_above="@id/loginFrame"
+        android:layout_centerHorizontal="true" />
+
+
+
+</RelativeLayout>
