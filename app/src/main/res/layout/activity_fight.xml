@@ -56,6 +56,47 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flare"
+            android:id="@+id/spellFlareButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bolt"
+            android:id="@+id/spellBoltButton"
+            android:layout_below="@+id/spellFlareButton"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enlighten"
+            android:id="@+id/spellEnlightenButton"
+            android:layout_below="@+id/spellBoltButton"
+            android:layout_alignEnd="@+id/spellBoltButton" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/s02_flare" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This spell kills people"
+            android:id="@+id/currentSpellText"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="57dp"
+            android:textSize="25dp" />
     </RelativeLayout>
 
     <RelativeLayout

@@ -10,7 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -42,22 +44,33 @@ public class FightActivity extends ActionBarActivity {
         selfMana1.setText(Integer.toString(0));
         selfMana2.setText(Integer.toString(0));
         selfMana3.setText(Integer.toString(0));
+        ImageView selfFace = (ImageView) findViewById(R.id.selfFace);
+        ImageView enemyFace = (ImageView) findViewById(R.id.enemyFace);
+
         firebase = new Firebase(getResources().getString(R.string.firebase));
         gamesRef = firebase.child("games");
         final String ID = getIntent().getStringExtra("ID");
         player = getIntent().getStringExtra("Player");
         if (player.equals("1")) {
             enemy = "2";
+            enemyFace.setImageResource(R.drawable.invoker_right2);
+            selfFace.setImageResource(R.drawable.invoker_left);
         }
         else {
             enemy = "1";
+            enemyFace.setImageResource(R.drawable.invoker_right);
+            selfFace.setImageResource(R.drawable.invoker_left2);
         }
+
+        Button Flare = (Button) findViewById(R.id.spellFlareButton);
 
         gamesRef.child(ID).child("turn").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue().toString().equals(player)) {
                     permission = 1;
+                    //alert player it's his turn
+                    Toast.makeText(getBaseContext(), "It's your turn.", Toast.LENGTH_LONG).show();
                     int mana1 = Integer.parseInt(selfMana1.getText().toString());
                     int mana2 = Integer.parseInt(selfMana2.getText().toString());
                     int mana3 = Integer.parseInt(selfMana3.getText().toString());
