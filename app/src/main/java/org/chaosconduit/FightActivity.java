@@ -7,36 +7,28 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 
-public class MainActivity extends ActionBarActivity {
+public class FightActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Button A = (Button) findViewById(R.id.button);
-        Button B = (Button) findViewById(R.id.button2);
-        Button practice = (Button) findViewById(R.id.button5);
-        B.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_fight);
+        Button selfAttack = (Button) findViewById(R.id.buttonSelfAtk);
+        Button enemyAttack = (Button) findViewById(R.id.buttonEnemyAtk);
+        selfAttack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context c = getBaseContext();
-                Intent intent = new Intent(c, FindActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
-        practice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context c = getBaseContext();
-                Intent intent = new Intent(c, FightActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                startActivity(intent);
+                TextView enemyHealth = (TextView) findViewById(R.id.textView6);
+                int damage = 3;
+                int currentHP = Integer.parseInt(enemyHealth.getText().toString());
+                int finalHP = currentHP - damage;
+                //String send = Integer.toString(finalHP);
+                enemyHealth.setText(Integer.toString(finalHP));
             }
         });
     }
@@ -45,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_fight, menu);
         return true;
     }
 

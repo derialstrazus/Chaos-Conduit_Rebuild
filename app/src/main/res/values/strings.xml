@@ -1,6 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Chaos Conduit</string>
 
-    <string name="hello_world">Hello world1!</string>
+    <string name="app_name">Chaos Conduit</string>
+    <string name="hello_world">Welcome to the arena!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_fight">Blast him down!</string>
+
 </resources>
