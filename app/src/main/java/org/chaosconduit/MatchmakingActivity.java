@@ -43,7 +43,7 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
     public void matchFound(String ID){
         Intent intent = new Intent(getBaseContext(), FightActivity.class);
         intent.putExtra("ID", ID);
-        intent.putExtra("Player", 2);
+        intent.putExtra("Player", "2");
         startActivity(intent);
         finish();
     }
@@ -78,7 +78,7 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
                     if (p2.equals("open")) {
                         gamesRef.child(ds.getKey()).child("player2").setValue(UID);
                         gamesRef.child(ds.getKey()).child("status").setValue("closed");
-                        matchFound(gamesRef.child(ds.getKey()).toString());
+                        matchFound(gamesRef.child(ds.getKey()).toString().replace(".",""));
                         return;
                     }
                 }

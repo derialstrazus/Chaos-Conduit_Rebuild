@@ -26,7 +26,7 @@ public class FightActivity extends ActionBarActivity {
     TextView enemyHealth;
     TextView selfMana1, selfMana2, selfMana3;
     Firebase firebase, gamesRef;
-    int player, enemy;
+    String player, enemy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +45,12 @@ public class FightActivity extends ActionBarActivity {
         firebase = new Firebase(getResources().getString(R.string.firebase));
         gamesRef = firebase.child("games");
         final String ID = getIntent().getStringExtra("ID");
-        player = getIntent().getIntExtra("Player", 0);
-        if (player == 1) {
-            enemy = 2;
+        player = getIntent().getStringExtra("Player");
+        if (player.equals("1")) {
+            enemy = "2";
         }
         else {
-            enemy = 1;
+            enemy = "1";
         }
 
         gamesRef.child(ID).child("turn").addValueEventListener(new ValueEventListener() {
