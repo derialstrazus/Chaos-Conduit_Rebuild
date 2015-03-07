@@ -24,8 +24,9 @@
             android:id="@+id/enemyHPText"
             android:layout_below="@+id/enemyFace"
             android:layout_alignStart="@+id/enemyFace"
-            android:textSize="30dp"
-            android:paddingTop="5dp" />
+            android:textSize="20dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +37,15 @@
             android:layout_toEndOf="@+id/enemyHPText"
             android:paddingTop="5dp"
             android:paddingLeft="5dp"
-            android:textSize="30dp" />
+            android:textSize="20dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pass"
+            android:id="@+id/enemyButtonPass"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -69,8 +78,9 @@
             android:id="@+id/selfHPText"
             android:layout_below="@+id/selfFace"
             android:layout_alignLeft="@+id/selfFace"
-            android:textSize="30dp"
-            android:paddingTop="5dp"/>
+            android:textSize="20dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -81,7 +91,7 @@
             android:layout_toEndOf="@+id/selfHPText"
             android:paddingTop="5dp"
             android:paddingLeft="5dp"
-            android:textSize="30dp" />
+            android:textSize="20dp" />
 
         <Button
             android:layout_width="wrap_content"
@@ -105,8 +115,65 @@
             android:layout_height="wrap_content"
             android:text="Attack"
             android:id="@+id/buttonAttack"
+            android:layout_alignParentBottom="true"
+            android:layout_alignEnd="@+id/selfFace" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/selfMana1Button"
+            android:src="@drawable/ml_red"
             android:layout_alignParentTop="true"
-            android:layout_alignEnd="@+id/buttonPass" />
+            android:layout_toStartOf="@+id/selfMana2Button" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/selfMana2Button"
+            android:src="@drawable/ml_yello"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/selfMana3Button" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/selfMana3Button"
+            android:src="@drawable/ml_blue"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/selfMana1"
+            android:gravity="center"
+            android:layout_below="@+id/selfMana1Button"
+            android:layout_alignStart="@+id/selfMana1Button"
+            android:layout_alignEnd="@+id/selfMana1Button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/selfMana2"
+            android:layout_below="@+id/selfMana2Button"
+            android:layout_alignStart="@+id/selfMana2Button"
+            android:gravity="center"
+            android:layout_toStartOf="@+id/buttonAttack"
+            android:layout_alignEnd="@+id/selfMana2Button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/selfMana3"
+            android:layout_below="@+id/selfMana3Button"
+            android:layout_alignStart="@+id/selfMana3Button"
+            android:layout_alignEnd="@+id/selfMana3Button"
+            android:gravity="center" />
+
+
 
     </RelativeLayout>
     <![CDATA[
