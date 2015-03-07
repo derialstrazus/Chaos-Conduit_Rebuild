@@ -121,7 +121,7 @@ public class FightActivity extends ActionBarActivity {
             }
         });
 
-        enemyPass.setOnClickListener(new View.OnClickListener() {
+        /*enemyPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 permission = 1;
@@ -152,7 +152,7 @@ public class FightActivity extends ActionBarActivity {
                     builder.setMessage("You have too much mana!");
                 }
             }
-        });
+        });*/
     }
 
 

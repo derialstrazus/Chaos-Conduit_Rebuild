@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/enemyFace"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/invoker_right" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HP"
+            android:id="@+id/enemyHPText"
+            android:layout_below="@+id/enemyFace"
+            android:layout_alignStart="@+id/enemyFace"
+            android:textSize="20dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="60"
+            android:id="@+id/enemyHP"
+            android:layout_below="@+id/enemyFace"
+            android:layout_toEndOf="@+id/enemyHPText"
+            android:paddingTop="5dp"
+            android:paddingLeft="5dp"
+            android:textSize="20dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pass"
+            android:id="@+id/enemyButtonPass"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.50"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true">
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/imageButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/s03_bolt_small" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/imageButton2"
+            android:layout_below="@+id/imageButton"
+            android:layout_alignEnd="@+id/imageButton"
+            android:src="@drawable/s27_transformer_small" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/imageButton3"
+            android:layout_below="@+id/imageButton2"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/s28_pulse_small" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/imageButton4"
+            android:layout_below="@+id/imageButton3"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/s05_enlighten_small" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/imageButton5"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/imageButton"
+            android:src="@drawable/s10_suburst_small" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/imageButton6"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/imageButton5"
+            android:src="@drawable/s09_explo_small" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/imageButton7"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/imageButton6"
+            android:src="@drawable/s02_flare_small" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/imageButton8"
+            android:layout_below="@+id/imageButton"
+            android:layout_toStartOf="@+id/imageButton"
+            android:src="@drawable/s42_overtap_small" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/imageButton9"
+            android:layout_below="@+id/imageButton6"
+            android:layout_toStartOf="@+id/imageButton8"
+            android:src="@drawable/s13_manacombust_small" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/imageButton10"
+            android:layout_below="@+id/imageButton8"
+            android:layout_toStartOf="@+id/imageButton3"
+            android:src="@drawable/s14_forcedextract_small" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:src="@drawable/s02_flare"
+            android:layout_alignBottom="@+id/imageButton10"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spell Name"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/imageView2"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_toStartOf="@+id/imageButton4"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spell Description"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/imageButton4"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/selfFace"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/invoker_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HP"
+            android:id="@+id/selfHPText"
+            android:layout_below="@+id/selfFace"
+            android:layout_alignLeft="@+id/selfFace"
+            android:textSize="20dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="60"
+            android:id="@+id/selfHP"
+            android:layout_below="@+id/selfFace"
+            android:layout_toEndOf="@+id/selfHPText"
+            android:paddingTop="5dp"
+            android:paddingLeft="5dp"
+            android:textSize="20dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pass"
+            android:id="@+id/buttonPass"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear"
+            android:id="@+id/buttonClear"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/buttonPass" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attack"
+            android:id="@+id/buttonAttack"
+            android:layout_alignParentBottom="true"
+            android:layout_alignEnd="@+id/selfFace" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/selfMana1Button"
+            android:src="@drawable/ml_red"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/selfMana2Button" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/selfMana2Button"
+            android:src="@drawable/ml_yello"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/selfMana3Button" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/selfMana3Button"
+            android:src="@drawable/ml_blue"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/selfMana1"
+            android:gravity="center"
+            android:layout_below="@+id/selfMana1Button"
+            android:layout_alignStart="@+id/selfMana1Button"
+            android:layout_alignEnd="@+id/selfMana1Button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/selfMana2"
+            android:layout_below="@+id/selfMana2Button"
+            android:layout_alignStart="@+id/selfMana2Button"
+            android:gravity="center"
+            android:layout_toStartOf="@+id/buttonAttack"
+            android:layout_alignEnd="@+id/selfMana2Button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/selfMana3"
+            android:layout_below="@+id/selfMana3Button"
+            android:layout_alignStart="@+id/selfMana3Button"
+            android:layout_alignEnd="@+id/selfMana3Button"
+            android:gravity="center" />
+
+
+
+    </RelativeLayout>
+    <![CDATA[
+
+    * 0.5
+        android:layout_gravity="center_horizontal">]]>
+</LinearLayout>
