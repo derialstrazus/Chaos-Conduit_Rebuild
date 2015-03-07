@@ -1,5 +1,7 @@
 package org.chaosconduit;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 //import android.app.Fragment;
 import android.os.Bundle;
@@ -37,18 +39,23 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_main_old, container, false);
+        View InputView = inflater.inflate(R.layout.activity_main_old, container, false);
+        Button B = (Button) InputView.findViewById(R.id.button2);
+        B.setOnClickListener(this);
+        return InputView;
     }
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button:
-                Toast.makeText(getActivity(), "BUTTON PRESSED",Toast.LENGTH_SHORT).show();
-                // switchFragment(HelpFragment.TAG);
-                break;
             case R.id.button2:
+                Context c = getActivity();
+                Intent intent = new Intent(c, FightActivity.class);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                break;
+            case R.id.button:
 
                 break;
         }
