@@ -12,11 +12,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.firebase.client.Firebase;
+
 import java.util.Random;
 
 
 public class FightActivity extends ActionBarActivity {
 
+    Firebase firebase;
     int permission = 1;     // 1 is permission allowed, 0 is not allowed, ie enemy turn.
     TextView enemyHealth;
     TextView selfMana1, selfMana2, selfMana3;
@@ -25,6 +28,10 @@ public class FightActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fight);
+
+        String ID = getIntent().getStringExtra("ID");
+        firebase = new Firebase(getResources().getString(R.string.firebase)).child("games").child(ID);
+
         Button selfAttack = (Button) findViewById(R.id.buttonAttack);
         Button enemyPass = (Button) findViewById(R.id.enemyButtonPass);
         enemyHealth = (TextView) findViewById(R.id.enemyHP);

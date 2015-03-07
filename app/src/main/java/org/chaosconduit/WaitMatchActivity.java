@@ -24,7 +24,7 @@ public class WaitMatchActivity extends ActionBarActivity {
         setContentView(R.layout.waiting_screen);
         firebase = new Firebase(getResources().getString(R.string.firebase));
         ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar);
-        Firebase gamesRef = firebase.child("games");
+        final Firebase gamesRef = firebase.child("games");
 
         final String ID = getIntent().getStringExtra("ID");
 
@@ -32,8 +32,9 @@ public class WaitMatchActivity extends ActionBarActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue().toString().equals("closed")) {
-                    Toast.makeText(getBaseContext(), dataSnapshot.getValue().toString(), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getBaseContext(), FightActivity.class);
+                    Firebase newGame = gamesRef.child(ID);
+
                     intent.putExtra("ID", ID);
                     startActivity(intent);
                     finish();
