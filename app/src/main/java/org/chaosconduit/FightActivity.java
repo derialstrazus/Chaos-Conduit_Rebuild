@@ -12,26 +12,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import java.util.Random;
 
 
 public class FightActivity extends ActionBarActivity {
 
-    Firebase firebase;
     int permission = 1;     // 1 is permission allowed, 0 is not allowed, ie enemy turn.
     TextView enemyHealth;
     TextView selfMana1, selfMana2, selfMana3;
+    Firebase firebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fight);
-
-        String ID = getIntent().getStringExtra("ID");
-        firebase = new Firebase(getResources().getString(R.string.firebase)).child("games").child(ID);
-
         Button selfAttack = (Button) findViewById(R.id.buttonAttack);
         Button enemyPass = (Button) findViewById(R.id.enemyButtonPass);
         enemyHealth = (TextView) findViewById(R.id.enemyHP);
@@ -42,6 +41,48 @@ public class FightActivity extends ActionBarActivity {
         selfMana1.setText(Integer.toString(0));
         selfMana2.setText(Integer.toString(0));
         selfMana3.setText(Integer.toString(0));
+
+        Firebase gamesRef = firebase.child("games");
+        final String ID = getIntent().getStringExtra("ID");
+        gamesRef.child(ID).child("turn").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue().toString().equals("1")) {
+                    permission = 1;
+                    int mana1 = Integer.parseInt(selfMana1.getText().toString());
+                    int mana2 = Integer.parseInt(selfMana2.getText().toString());
+                    int mana3 = Integer.parseInt(selfMana3.getText().toString());
+                    //start Roll mana
+                    Random randMana = new Random();
+                    for (int i = 0; i < 3; i++) {
+                        int rolledMana = randMana.nextInt(3) + 1;
+                        switch (rolledMana) {
+                            case 1:
+                                mana1++;
+                                break;
+                            case 2:
+                                mana2++;
+                                break;
+                            case 3:
+                                mana3++;
+                                break;
+                        }
+                    }
+                    selfMana1.setText(Integer.toString(mana1));
+                    selfMana2.setText(Integer.toString(mana2));
+                    selfMana3.setText(Integer.toString(mana3));
+                    if (mana1 + mana2 + mana3 > 5) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
+                        builder.setMessage("You have too much mana!");
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
         selfAttack.setOnClickListener(new View.OnClickListener() {
             @Override
