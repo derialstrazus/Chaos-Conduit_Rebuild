@@ -8,7 +8,7 @@ import com.firebase.client.Firebase;
 /**
  * Created by Derial on 3/7/2015.
  */
-public class FindActivity extends ActionBarActivity {
+public class MatchmakingActivity extends ActionBarActivity {
 
     Firebase firebase;
 

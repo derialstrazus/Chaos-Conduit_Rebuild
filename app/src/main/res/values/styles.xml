@@ -12,12 +12,12 @@
 
     <style name="YellowButton" >
         <item name="android:textColor">#fff</item>
-        <item name="android:background">#fFc63e</item>
+        <item name="android:background">#9999ff</item>
     </style>
 
     <style name="GreenButton" >
         <item name="android:textColor">#fff</item>
-        <item name="android:background">#4ca64c</item>
+        <item name="android:background">#9999ff</item>
     </style>
 
 </resources>
