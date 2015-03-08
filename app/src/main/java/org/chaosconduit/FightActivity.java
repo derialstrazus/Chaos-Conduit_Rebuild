@@ -178,7 +178,20 @@ public class FightActivity extends ActionBarActivity {
                 mainSpellDesc.setText("Deal 6(R8)(R10) damage.  There is a 33% chance that the same amplification of Flare will be cast again for free.");
                 if (permission == 1){
                     //set active spell to main
-                    permission = 1;
+                    Toast.makeText(getBaseContext(), "Trying to cast Flare.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        spell_111.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainSpell.setImageResource(R.drawable.s09_explo);
+                mainSpellName.setText("Explosion");
+                mainSpellDesc.setText("Deal 15(R20)(R25) damage to your opponent and 10(Y9)(Y7) damage to yourself.");
+                if (permission == 1){
+                    //set active spell to main
+                    Toast.makeText(getBaseContext(), "Trying to cast Explosion.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
