@@ -93,6 +93,8 @@ public class FightActivity extends ActionBarActivity {
         gameID = ID;
         Log.w("GAME ID in FIGHT", gameID);
 
+        long mana1, mana2, mana3;
+
 
 
         ImageView selfFace = (ImageView) findViewById(R.id.selfFace);
@@ -156,7 +158,9 @@ public class FightActivity extends ActionBarActivity {
                         selfHealth.setText(Integer.toString(currentHP));
 
                         ArrayList<Long> mana = (ArrayList<Long>) map.get("manaAmt");
-                        //int mana1 = Integer.parseInt(mana.get("0").toString());
+                        long mana1 = mana.get(0);
+                        long mana2 = mana.get(1);
+                        long mana3 = mana.get(2);
 
                         //start Roll mana
                         Random randMana = new Random();
@@ -164,22 +168,116 @@ public class FightActivity extends ActionBarActivity {
                             int rolledMana = randMana.nextInt(3) + 1;
                             switch (rolledMana) {
                                 case 1:
-                                    mana.set(0, mana.get(0) + 1);
+                                    mana1++;
                                     break;
                                 case 2:
-                                    mana.set(1, mana.get(1) + 1);
+                                    mana2++;
                                     break;
                                 case 3:
-                                    mana.set(2, mana.get(2) + 1);
+                                    mana3++;
                                     break;
                             }
                         }
                         //add Mana to map
-                        selfMana1.setText(Long.toString(mana.get(0)));
-                        selfMana2.setText(Long.toString(mana.get(1)));
-                        selfMana3.setText(Long.toString(mana.get(2)));
 
+                        selfMana1.setText(Long.toString(mana1));
+                        selfMana2.setText(Long.toString(mana2));
+                        selfMana3.setText(Long.toString(mana3));
+
+                        mana.set(0, mana1);
+                        mana.set(1, mana2);
+                        mana.set(2, mana3);
                         map.put("manaAmt", mana);
+                        if(player.equals("1")){
+                            setPlayer1Map(map);
+                        }else{
+                            setPlayer2Map(map);
+                        }
+
+                        pushPlayerMapstoDB();
+
+                        if (mana1 > 3){
+                            spell_111.setEnabled(true);
+                            spell_111.setImageResource(R.drawable.s02_flare_small);
+                        }
+                        else {
+                            spell_111.setEnabled(false);
+                            spell_111.setImageResource(R.drawable.s02_flare_dim);
+                        }
+                        if ((mana1 >= 2) && (mana2 >= 1)){
+                            spell_112.setEnabled(true);
+                            spell_112.setImageResource(R.drawable.s09_explo_small);
+                        }
+                        else {
+                            spell_112.setEnabled(false);
+                            spell_112.setImageResource(R.drawable.s09_explo_dim);
+                        }
+
+                        if ((mana1 >= 1) && (mana2 >= 2)){
+                            spell_122.setEnabled(true);
+                            spell_122.setImageResource(R.drawable.s10_suburst_small);
+                        }
+                        else {
+                            spell_122.setEnabled(false);
+                            spell_122.setImageResource(R.drawable.s10_suburst_dim);
+                        }
+
+                        if (mana2 >= 3){
+                            spell_222.setEnabled(true);
+                            spell_222.setImageResource(R.drawable.s03_bolt_small);
+                        }
+                        else {
+                            spell_222.setEnabled(false);
+                            spell_222.setImageResource(R.drawable.s03_bolt_dim);
+                        }
+                        if ((mana2 >= 2) && (mana3 >= 1)){
+                            spell_223.setEnabled(true);
+                            spell_223.setImageResource(R.drawable.s27_transformer_small);
+                        }
+                        else {
+                            spell_223.setEnabled(false);
+                            spell_223.setImageResource(R.drawable.s27_transformer_dim);
+                        }
+                        if ((mana2 >= 1) && (mana3 >= 2)){
+                            spell_233.setEnabled(true);
+                            spell_233.setImageResource(R.drawable.s28_pulse_small);
+                        }
+                        else {
+                            spell_233.setEnabled(false);
+                            spell_233.setImageResource(R.drawable.s28_pulse_dim);
+                        }
+                        if (mana3 >= 3){
+                            spell_333.setEnabled(true);
+                            spell_333.setImageResource(R.drawable.s05_enlighten_small);
+                        }
+                        else {
+                            spell_333.setEnabled(false);
+                            spell_333.setImageResource(R.drawable.s05_enlighten_dim);
+                        }
+                        if ((mana1 >= 2) && (mana3 >= 1)){
+                            spell_113.setEnabled(true);
+                            spell_113.setImageResource(R.drawable.s13_manacombust_small);
+                        }
+                        else {
+                            spell_113.setEnabled(false);
+                            spell_113.setImageResource(R.drawable.s13_manacombust_dim);
+                        }
+                        if ((mana1 >= 1) && (mana3 >= 2)){
+                            spell_133.setEnabled(true);
+                            spell_133.setImageResource(R.drawable.s14_forcedextract_small);
+                        }
+                        else {
+                            spell_133.setEnabled(false);
+                            spell_133.setImageResource(R.drawable.s14_forcedextract_dim);
+                        }
+                        if ((mana1 >= 1) && (mana2 >= 1) && (mana3 >= 1)){
+                            spell_123.setEnabled(true);
+                            spell_123.setImageResource(R.drawable.s42_overtap_small);
+                        }
+                        else {
+                            spell_123.setEnabled(false);
+                            spell_123.setImageResource(R.drawable.s42_overtap_dim);
+                        }
                     }
                     start = false;
 
@@ -188,89 +286,6 @@ public class FightActivity extends ActionBarActivity {
 //                        builder.setMessage("You have too much mana!");
 //                    }
                     //grey out spells that do not meet mana requirement
-                    /*if (mana1 > 3){
-                        spell_111.setEnabled(true);
-                        spell_111.setImageResource(R.drawable.s02_flare_small);
-                    }
-                    else {
-                        spell_111.setEnabled(false);
-                        spell_111.setImageResource(R.drawable.s02_flare_dim);
-                    }*/
-                    /*
-                    if (mana1 > 3){
-                        spell_111.setEnabled(true);
-                        spell_111.setImageResource(R.drawable.s02_flare_small);
-                    }
-                    else {
-                        spell_111.setEnabled(flase);
-                        spell_111.setImageResource(R.drawable.s02_flare_dim);
-                    }
-                    if (mana1 > 3){
-                        spell_111.setEnabled(true);
-                        spell_111.setImageResource(R.drawable.s02_flare_small);
-                    }
-                    else {
-                        spell_111.setEnabled(flase);
-                        spell_111.setImageResource(R.drawable.s02_flare_dim);
-                    }
-                    if (mana1 > 3){
-                        spell_111.setEnabled(true);
-                        spell_111.setImageResource(R.drawable.s02_flare_small);
-                    }
-                    else {
-                        spell_111.setEnabled(flase);
-                        spell_111.setImageResource(R.drawable.s02_flare_dim);
-                    }
-                    if (mana1 > 3){
-                        spell_111.setEnabled(true);
-                        spell_111.setImageResource(R.drawable.s02_flare_small);
-                    }
-                    else {
-                        spell_111.setEnabled(flase);
-                        spell_111.setImageResource(R.drawable.s02_flare_dim);
-                    }
-                    if (mana1 > 3){
-                        spell_111.setEnabled(true);
-                        spell_111.setImageResource(R.drawable.s02_flare_small);
-                    }
-                    else {
-                        spell_111.setEnabled(flase);
-                        spell_111.setImageResource(R.drawable.s02_flare_dim);
-                    }
-                    if (mana1 > 3){
-                        spell_111.setEnabled(true);
-                        spell_111.setImageResource(R.drawable.s02_flare_small);
-                    }
-                    else {
-                        spell_111.setEnabled(flase);
-                        spell_111.setImageResource(R.drawable.s02_flare_dim);
-                    }
-                    if (mana1 > 3){
-                        spell_111.setEnabled(true);
-                        spell_111.setImageResource(R.drawable.s02_flare_small);
-                    }
-                    else {
-                        spell_111.setEnabled(flase);
-                        spell_111.setImageResource(R.drawable.s02_flare_dim);
-                    }
-                    if (mana1 > 3){
-                        spell_111.setEnabled(true);
-                        spell_111.setImageResource(R.drawable.s02_flare_small);
-                    }
-                    else {
-                        spell_111.setEnabled(flase);
-                        spell_111.setImageResource(R.drawable.s02_flare_dim);
-                    }
-                    if (mana1 > 3){
-                        spell_111.setEnabled(true);
-                        spell_111.setImageResource(R.drawable.s02_flare_small);
-                    }
-                    else {
-                        spell_111.setEnabled(flase);
-                        spell_111.setImageResource(R.drawable.s02_flare_dim);
-                    }
-                    */
-
                 }
             }
 
@@ -372,10 +387,6 @@ public class FightActivity extends ActionBarActivity {
 //                            permission = 0;
 //                            break;
                     }
-                    //enemyHealth.setText(Integer.toString(finalEnemyHP));
-                    pushPlayerMapstoDB();
-                    gamesRef.child(ID).child("turn").setValue(enemy);
-                    selfAttack.setEnabled(false);
                 }
             }
         });

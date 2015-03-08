@@ -39,13 +39,14 @@
             android:layout_toStartOf="@+id/enemyFace"
             android:padding="10dp" />
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pass"
-            android:id="@+id/enemyButtonPass"
-            android:layout_alignParentTop="true"
+            android:text="Enemy is idle"
+            android:id="@+id/enemyActivity"
+            android:layout_below="@+id/enemyHPText"
             android:layout_alignParentStart="true" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -62,7 +63,7 @@
             android:id="@+id/spellBoltButton"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/s03_bolt_small"
+            android:src="@drawable/s03_bolt_dim"
             android:background="#ffcfcfcf" />
 
         <ImageButton
@@ -71,7 +72,7 @@
             android:id="@+id/spellTransformerButton"
             android:layout_below="@+id/spellBoltButton"
             android:layout_alignEnd="@+id/spellBoltButton"
-            android:src="@drawable/s27_transformer_small"
+            android:src="@drawable/s27_transformer_dim"
             android:background="#ffcfcfcf" />
 
         <ImageButton
@@ -80,7 +81,7 @@
             android:id="@+id/spellPulseButton"
             android:layout_below="@+id/spellTransformerButton"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/s28_pulse_small"
+            android:src="@drawable/s28_pulse_dim"
             android:background="#ffcfcfcf" />
 
         <ImageButton
@@ -89,7 +90,7 @@
             android:id="@+id/spellEnlightenButton"
             android:layout_below="@+id/spellPulseButton"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/s05_enlighten_small"
+            android:src="@drawable/s05_enlighten_dim"
             android:background="#ffcfcfcf" />
 
         <ImageButton
@@ -98,7 +99,7 @@
             android:id="@+id/spellSunburstButton"
             android:layout_alignParentTop="true"
             android:layout_toStartOf="@+id/spellBoltButton"
-            android:src="@drawable/s10_suburst_small"
+            android:src="@drawable/s10_suburst_dim"
             android:background="#ffcfcfcf" />
 
         <ImageButton
@@ -107,7 +108,7 @@
             android:id="@+id/spellExploButton"
             android:layout_alignParentTop="true"
             android:layout_toStartOf="@+id/spellSunburstButton"
-            android:src="@drawable/s09_explo_small"
+            android:src="@drawable/s09_explo_dim"
             android:background="#ffcfcfcf" />
 
         <ImageButton
@@ -116,7 +117,7 @@
             android:id="@+id/spellFlareButton"
             android:layout_alignParentTop="true"
             android:layout_toStartOf="@+id/spellExploButton"
-            android:src="@drawable/s02_flare_small"
+            android:src="@drawable/s02_flare_dim"
             android:background="#ffcfcfcf" />
 
         <ImageButton
@@ -125,7 +126,7 @@
             android:id="@+id/spellOvertapButton"
             android:layout_below="@+id/spellBoltButton"
             android:layout_toStartOf="@+id/spellBoltButton"
-            android:src="@drawable/s42_overtap_small"
+            android:src="@drawable/s42_overtap_dim"
             android:background="#ffcfcfcf" />
 
         <ImageButton
@@ -134,7 +135,7 @@
             android:id="@+id/spellManacombustButton"
             android:layout_below="@+id/spellExploButton"
             android:layout_toStartOf="@+id/spellOvertapButton"
-            android:src="@drawable/s13_manacombust_small"
+            android:src="@drawable/s13_manacombust_dim"
             android:background="#ffcfcfcf" />
 
         <ImageButton
@@ -143,7 +144,7 @@
             android:id="@+id/spellExtractButton"
             android:layout_below="@+id/spellOvertapButton"
             android:layout_toStartOf="@+id/spellPulseButton"
-            android:src="@drawable/s14_forcedextract_small"
+            android:src="@drawable/s14_forcedextract_dim"
             android:background="#ffcfcfcf" />
 
         <ImageButton
@@ -166,7 +167,8 @@
             android:paddingRight="5dp"
             android:paddingBottom="5dp"
             android:layout_above="@+id/highlightSpellButton"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/spellFlareButton" />
 
         <TextView
             android:layout_width="wrap_content"
