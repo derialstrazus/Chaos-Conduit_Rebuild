@@ -68,12 +68,11 @@ public class Spells {
             //Toast.makeText(getBaseContext(), ("Flare Triggered %d times", flareCount), Toast.LENGTH_SHORT.show());
         }
 
-        int redManaCost = 3 + redAmp;
-        ArrayList<Long> selfManaCnt = (ArrayList<Long>) mapSelf.get("manaAmt");
-        long currentMana = selfManaCnt.get(0);
-        currentMana -= redManaCost;
-        selfManaCnt.set(0,currentMana);
-        mapSelf.put("manaAmt",selfManaCnt);
+        ArrayList<Long> selfMana = (ArrayList<Long>) mapSelf.get("manaAmt");
+        long selfRedMana = selfMana.get(0);
+        selfRedMana = selfRedMana - (3 + redAmp);
+        selfMana.set(0,selfRedMana);
+        mapSelf.put("manaAmt",selfMana);
 
         mapEnemy.put("health", enemyHealth);
         maps.add(mapSelf);
@@ -149,6 +148,16 @@ public class Spells {
         selfHealth = selfHealth - damageSelf;
         mapEnemy.put("health", enemyHealth);
         mapSelf.put("health", selfHealth);
+
+        ArrayList<Long> selfMana = (ArrayList<Long>) mapSelf.get("manaAmt");
+        long selfRedMana = selfMana.get(0);
+        long selfYellowMana = selfMana.get(1);
+        selfRedMana = selfRedMana - (2 + redAmp);
+        selfYellowMana = selfYellowMana - (1 + yellowAmp);
+        selfMana.set(0,selfRedMana);
+        selfMana.set(1,selfYellowMana);
+        mapSelf.put("manaAmt",selfMana);
+
         maps.add(mapSelf);
         maps.add(mapEnemy);
         return maps;
@@ -303,6 +312,17 @@ public class Spells {
 //        enemyHealth = enemyHealth - damage;
 //        mapEnemy.put("health", enemyHealth);
 //        mapSelf.put("overtapFatigue", overtapFatigue);
+//
+//        ArrayList<Long> selfMana = (ArrayList<Long>) mapSelf.get("manaAmt");
+//        long selfRedMana = selfMana.get(0);
+//        long selfYellowMana = selfMana.get(1);
+//        long selfBlueMana = selfMana.get(2);
+//        selfRedMana = selfRedMana - (2 + redAmp);
+//        selfYellowMana = selfYellowMana - (1 + yellowAmp);
+//        selfMana.set(0,selfRedMana);
+//        selfMana.set(1,selfYellowMana);
+//        mapSelf.put("manaAmt",selfMana);
+//
 //        maps.add(mapSelf);
 //        maps.add(mapEnemy);
 //        return maps;
