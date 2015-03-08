@@ -33,7 +33,7 @@ public class FightActivity extends ActionBarActivity {
     boolean start = true;
     int permission;     // 1 is permission allowed, 0 is not allowed, ie enemy turn.
     TextView enemyHealth, selfHealth;
-    TextView selfMana1, selfMana2, selfMana3;
+    TextView selfMana1, selfMana2, selfMana3, enemyActivity;
     Firebase firebase, gamesRef;
     String player, enemy;
     String mainSpell = "000";
@@ -86,6 +86,9 @@ public class FightActivity extends ActionBarActivity {
         final ImageButton mainSpellReady = (ImageButton) findViewById(R.id.highlightSpellButton);
         final TextView mainSpellName = (TextView) findViewById(R.id.highlightSpellName);
         final TextView mainSpellDesc = (TextView) findViewById(R.id.highlightSpellDesc);
+
+        enemyActivity = (TextView) findViewById(R.id.enemyActivity);
+
         final ImageView manaCost1 = (ImageView) findViewById(R.id.manaCost1);
         final ImageView manaCost2 = (ImageView) findViewById(R.id.manaCost2);
         final ImageView manaCost3 = (ImageView) findViewById(R.id.manaCost3);
@@ -96,7 +99,7 @@ public class FightActivity extends ActionBarActivity {
         Map<String,Object> map = new HashMap<>();
         ArrayList<Long> manaCnt = new ArrayList<>();
         for (int i = 0; i < 3; i++){
-            manaCnt.add((long)0);
+            manaCnt.add((long) 0);
         }
         map.put("manaAmt", manaCnt);
         map.put("health", 60);
@@ -585,6 +588,19 @@ public class FightActivity extends ActionBarActivity {
                 }
             }
         });*/
+
+        gamesRef.child(ID).child("lastSpell").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                lastSpellCast = dataSnapshot.getValue().toString();
+                enemyActivity.setText("Last spell cast: " +lastSpellCast);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
         updatePlayerMapsFromDB();
 
