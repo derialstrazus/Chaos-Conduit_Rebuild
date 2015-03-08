@@ -123,26 +123,26 @@ public class FightActivity extends ActionBarActivity {
                     permission = 1;
                     selfAttack.setEnabled(true);
 
-//                    if(start == false) {
-//                        Map<String, Object> map;
-//                        if (player.equals("1")) {
-//                            map = player1Map;
-//                        } else {
-//                            map = player2Map;
-//                        }
-//                        int currentHP = Integer.parseInt(map.get("health").toString());
-//                        selfHealth.setText(Integer.toString(currentHP));
-//                    }
-//                    start = false;
-                    //alert player it's his turn
-                    Map<String, Object> map;
-                    if (player.equals("1")) {
-                        map = player1Map;
-                    } else {
-                        map = player2Map;
+                    if(start == false) {
+                        Map<String, Object> map;
+                        if (player.equals("1")) {
+                            map = player1Map;
+                        } else {
+                            map = player2Map;
+                        }
+                        int currentHP = Integer.parseInt(map.get("health").toString());
+                        selfHealth.setText(Integer.toString(currentHP));
                     }
-                    int currentHP = Integer.parseInt(map.get("health").toString());
-                    selfHealth.setText(Integer.toString(currentHP));
+                    start = false;
+                    //alert player it's his turn
+//                    Map<String, Object> map;
+//                    if (player.equals("1")) {
+//                        map = player1Map;
+//                    } else {
+//                        map = player2Map;
+//                    }
+//                    int currentHP = Integer.parseInt(map.get("health").toString());
+//                    selfHealth.setText(Integer.toString(currentHP));
 
                     Toast.makeText(getBaseContext(), "It's your turn.", Toast.LENGTH_SHORT).show();
 
