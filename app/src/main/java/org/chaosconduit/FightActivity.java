@@ -59,6 +59,7 @@ public class FightActivity extends ActionBarActivity {
         if (player != null){
             if(player.equals("1")){
                 selfHealth.setText(player1Map.get("health").toString());
+                enemyHealth.setText(player2Map.get("health").toString());
             }
         }
     }
@@ -68,6 +69,7 @@ public class FightActivity extends ActionBarActivity {
         player2Map = map;
         if (player != null){
             if(player.equals("2")){
+                enemyHealth.setText(player1Map.get("health").toString());
                 selfHealth.setText(player2Map.get("health").toString());
             }
         }
