@@ -56,11 +56,21 @@ public class FightActivity extends ActionBarActivity {
     public void setPlayer1Map(Map<String,Object> map){
         Log.w("MAP TEST", "PLAYER 1");
         player1Map = map;
+        if (player != null){
+            if(player.equals("1")){
+                selfHealth.setText(player1Map.get("health").toString());
+            }
+        }
     }
 
     public void setPlayer2Map(Map<String,Object> map){
         Log.w("MAP TEST", "PLAYER 2");
         player2Map = map;
+        if (player != null){
+            if(player.equals("2")){
+                selfHealth.setText(player2Map.get("health").toString());
+            }
+        }
     }
 
     public String getGameID(){
@@ -666,6 +676,7 @@ public class FightActivity extends ActionBarActivity {
 
             }
         });
+
 
         updatePlayerMapsFromDB();
 
