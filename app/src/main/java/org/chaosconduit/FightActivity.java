@@ -58,6 +58,10 @@ public class FightActivity extends ActionBarActivity {
         player1Map = map;
         if (player != null){
             if(player.equals("1")){
+                ArrayList<Long> list = (ArrayList<Long>) map.get("manaAmt");
+                selfMana1.setText(list.get(0).toString());
+                selfMana2.setText(list.get(1).toString());
+                selfMana3.setText(list.get(2).toString());
                 selfHealth.setText(player1Map.get("health").toString());
                 enemyHealth.setText(player2Map.get("health").toString());
             }
@@ -69,6 +73,10 @@ public class FightActivity extends ActionBarActivity {
         player2Map = map;
         if (player != null){
             if(player.equals("2")){
+                ArrayList<Long> list = (ArrayList<Long>) map.get("manaAmt");
+                selfMana1.setText(list.get(0).toString());
+                selfMana2.setText(list.get(1).toString());
+                selfMana3.setText(list.get(2).toString());
                 enemyHealth.setText(player1Map.get("health").toString());
                 selfHealth.setText(player2Map.get("health").toString());
             }
