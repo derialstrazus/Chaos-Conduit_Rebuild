@@ -44,8 +44,11 @@
             android:layout_height="wrap_content"
             android:text="Enemy is idle"
             android:id="@+id/enemyActivity"
-            android:layout_below="@+id/enemyHPText"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/enemyFace"
+            android:layout_alignBottom="@+id/enemyFace"
+            android:padding="5dp"
+            android:layout_below="@+id/enemyHPText" />
 
     </RelativeLayout>
 
@@ -281,7 +284,8 @@
             android:text="Pass"
             android:id="@+id/buttonPass"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible" />
 
         <Button
             android:layout_width="wrap_content"
@@ -289,16 +293,17 @@
             android:text="Clear"
             android:id="@+id/buttonClear"
             android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/buttonPass" />
+            android:layout_toStartOf="@+id/buttonPass"
+            android:visibility="invisible" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Attack"
+            android:text="Attack (3 dmg)"
             android:id="@+id/buttonAttack"
-            android:layout_alignParentBottom="true"
-            android:layout_alignEnd="@+id/selfFace" />
+            android:layout_below="@+id/selfFace"
+            android:layout_alignStart="@+id/buttonClear" />
 
         <ImageButton
             android:layout_width="wrap_content"

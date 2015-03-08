@@ -493,18 +493,18 @@ public class FightActivity extends ActionBarActivity {
                             permission = 0;
                             gamesRef.child(ID).child("lastSpell").setValue("Electric Pulse");
                             break;
-//                        case "123":
-//                            maps = Spells.Overtap(mapSelf, mapEnemy, 0, 0, 0);
-//                            if(player.equals("1")){
-//                                player1Map = maps.get(0);
-//                                player2Map = maps.get(1);
-//                            }else{
-//                                player2Map = maps.get(0);
-//                                player1Map = maps.get(1);
-//                            }
-//                            permission = 0;
-//                            gamesRef.child(ID).child("lastSpell").setValue("Overtap");
-//                            break;
+                        case "123":
+                            maps = Spells.Overtap(mapSelf, mapEnemy, 0, 0, 0);
+                            if(player.equals("1")){
+                                player1Map = maps.get(0);
+                                player2Map = maps.get(1);
+                            }else{
+                                player2Map = maps.get(0);
+                                player1Map = maps.get(1);
+                            }
+                            permission = 0;
+                            gamesRef.child(ID).child("lastSpell").setValue("Overtap");
+                            break;
                     }
                     pushPlayerMapstoDB();
                     setManaValues(player);
@@ -524,6 +524,9 @@ public class FightActivity extends ActionBarActivity {
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_red_small);
                 manaCost3.setImageResource(R.drawable.ml_red_small);
+                manaAmp1.setImageResource(R.drawable.ml_gray_small);
+                manaAmp2.setImageResource(R.drawable.ml_gray_small);
+                manaAmp3.setImageResource(R.drawable.ml_gray_small);
                 mainSpell = "111";
             }
         });
@@ -536,6 +539,9 @@ public class FightActivity extends ActionBarActivity {
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_red_small);
                 manaCost3.setImageResource(R.drawable.ml_yellow_small);
+                manaAmp1.setImageResource(R.drawable.ml_gray_small);
+                manaAmp2.setImageResource(R.drawable.ml_gray_small);
+                manaAmp3.setImageResource(R.drawable.ml_gray_small);
                 mainSpell = "112";
             }
         });
@@ -550,6 +556,9 @@ public class FightActivity extends ActionBarActivity {
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_yellow_small);
                 manaCost3.setImageResource(R.drawable.ml_yellow_small);
+                manaAmp1.setImageResource(R.drawable.ml_gray_small);
+                manaAmp2.setImageResource(R.drawable.ml_gray_small);
+                manaAmp3.setImageResource(R.drawable.ml_gray_small);
                 mainSpell = "122";
             }
         });
@@ -562,6 +571,9 @@ public class FightActivity extends ActionBarActivity {
                 manaCost1.setImageResource(R.drawable.ml_yellow_small);
                 manaCost2.setImageResource(R.drawable.ml_yellow_small);
                 manaCost3.setImageResource(R.drawable.ml_yellow_small);
+                manaAmp1.setImageResource(R.drawable.ml_gray_small);
+                manaAmp2.setImageResource(R.drawable.ml_gray_small);
+                manaAmp3.setImageResource(R.drawable.ml_gray_small);
                 mainSpell = "222";
             }
         });
@@ -574,6 +586,9 @@ public class FightActivity extends ActionBarActivity {
                 manaCost1.setImageResource(R.drawable.ml_yellow_small);
                 manaCost2.setImageResource(R.drawable.ml_yellow_small);
                 manaCost3.setImageResource(R.drawable.ml_blue_small);
+                manaAmp1.setImageResource(R.drawable.ml_gray_small);
+                manaAmp2.setImageResource(R.drawable.ml_gray_small);
+                manaAmp3.setImageResource(R.drawable.ml_gray_small);
                 mainSpell = "223";
             }
         });
@@ -587,6 +602,9 @@ public class FightActivity extends ActionBarActivity {
                 manaCost1.setImageResource(R.drawable.ml_yellow_small);
                 manaCost2.setImageResource(R.drawable.ml_blue_small);
                 manaCost3.setImageResource(R.drawable.ml_blue_small);
+                manaAmp1.setImageResource(R.drawable.ml_gray_small);
+                manaAmp2.setImageResource(R.drawable.ml_gray_small);
+                manaAmp3.setImageResource(R.drawable.ml_gray_small);
                 mainSpell = "233";
             }
         });
@@ -599,6 +617,9 @@ public class FightActivity extends ActionBarActivity {
                 manaCost1.setImageResource(R.drawable.ml_blue_small);
                 manaCost2.setImageResource(R.drawable.ml_blue_small);
                 manaCost3.setImageResource(R.drawable.ml_blue_small);
+                manaAmp1.setImageResource(R.drawable.ml_gray_small);
+                manaAmp2.setImageResource(R.drawable.ml_gray_small);
+                manaAmp3.setImageResource(R.drawable.ml_gray_small);
                 mainSpell = "333";
             }
         });
@@ -611,6 +632,9 @@ public class FightActivity extends ActionBarActivity {
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_red_small);
                 manaCost3.setImageResource(R.drawable.ml_blue_small);
+                manaAmp1.setImageResource(R.drawable.ml_gray_small);
+                manaAmp2.setImageResource(R.drawable.ml_gray_small);
+                manaAmp3.setImageResource(R.drawable.ml_gray_small);
                 mainSpell = "113";
             }
         });
@@ -623,6 +647,9 @@ public class FightActivity extends ActionBarActivity {
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_blue_small);
                 manaCost3.setImageResource(R.drawable.ml_blue_small);
+                manaAmp1.setImageResource(R.drawable.ml_gray_small);
+                manaAmp2.setImageResource(R.drawable.ml_gray_small);
+                manaAmp3.setImageResource(R.drawable.ml_gray_small);
                 mainSpell = "133";
             }
         });

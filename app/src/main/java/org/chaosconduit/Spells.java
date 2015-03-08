@@ -416,7 +416,7 @@ public class Spells {
         ArrayList<Long> enemyMana = (ArrayList<Long>) mapEnemy.get("manaAmt");
         Random randomSteal = new Random();
         int found = 0, steal = 0;
-        while (removeMana > 0) {
+        while (removeMana != 0) {
             while (found == 0) {
                 if ((enemyMana.get(0) == 0) && (enemyMana.get(1) == 0) && (enemyMana.get(2) == 0)) {
                     found = 1;
