@@ -38,7 +38,20 @@ public class FightActivity extends ActionBarActivity {
     String player, enemy;
     String mainSpell = "000";
     String gameID;
+    String lastSpellCast = "";
     Map<String,Object> player1Map, player2Map;
+
+    public void setManaValues(String player){
+        ArrayList<Long> list;
+        if (player.equals("1")){
+            list = (ArrayList) player1Map.get("manaAmt");
+        }else{
+            list = (ArrayList) player1Map.get("manaAmt");
+        }
+        selfMana1.setText(list.get(0).toString());
+        selfMana2.setText(list.get(1).toString());
+        selfMana3.setText(list.get(2).toString());
+    }
 
     public void setPlayer1Map(Map<String,Object> map){
         Log.w("MAP TEST", "PLAYER 1");
@@ -326,6 +339,7 @@ public class FightActivity extends ActionBarActivity {
                     //String send = Integer.toString(finalHP);
                     enemyHealth.setText(Integer.toString(finalEnemyHP));
                     gamesRef.child(ID).child("turn").setValue(enemy);
+                    gamesRef.child(ID).child("lastSpell").setValue("Auto Attack");
                     selfAttack.setEnabled(false);
                     permission = 0;
                 }
@@ -359,6 +373,7 @@ public class FightActivity extends ActionBarActivity {
                                 player1Map = maps.get(1);
                             }
                             permission = 0;
+                            gamesRef.child(ID).child("lastSpell").setValue("Flare");
                             break;
                         case "222":
                             maps = Spells.Bolt(mapSelf, mapEnemy, 0);
@@ -370,6 +385,7 @@ public class FightActivity extends ActionBarActivity {
                                 player1Map = maps.get(1);
                             }
                             permission = 0;
+                            gamesRef.child(ID).child("lastSpell").setValue("Bolt");
                             break;
 //                        case "333":
 //                            Spells.Enlighten(mapSelf, mapEnemy, 0);
@@ -405,6 +421,7 @@ public class FightActivity extends ActionBarActivity {
 //                            break;
                     }
                     pushPlayerMapstoDB();
+                    setManaValues(player);
                     gamesRef.child(ID).child("turn").setValue(enemy);
                     selfAttack.setEnabled(false);
                     permission = 0;
@@ -631,5 +648,6 @@ public class FightActivity extends ActionBarActivity {
 //    public void setMainSpell(String spell){
 //        mainSpell = spell;
 //    }
+
 
 }
