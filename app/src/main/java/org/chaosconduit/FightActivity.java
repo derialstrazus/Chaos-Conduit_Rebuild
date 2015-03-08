@@ -648,8 +648,10 @@ public class FightActivity extends ActionBarActivity {
         gamesRef.child(ID).child("lastSpell").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                lastSpellCast = dataSnapshot.getValue().toString();
-                enemyActivity.setText("Last spell cast: " +lastSpellCast);
+                if (dataSnapshot.getValue() != null) {
+                    lastSpellCast = dataSnapshot.getValue().toString();
+                    enemyActivity.setText("Last spell cast: " + lastSpellCast);
+                }
             }
 
             @Override
