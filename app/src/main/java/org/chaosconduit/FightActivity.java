@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import java.util.Map;
 import java.util.Random;
 
 
@@ -29,7 +31,21 @@ public class FightActivity extends ActionBarActivity {
     TextView selfMana1, selfMana2, selfMana3;
     Firebase firebase, gamesRef;
     String player, enemy;
+    String gameID;
+    Map<String,Object> player1Map, player2Map;
 
+    public void setPlayer1Map(Map<String,Object> map){
+        Log.w("MAP TEST", "PLAYER 1");
+        player1Map = map;
+    }
+
+    public void setPlayer2Map(Map<String,Object> map){
+        player2Map = map;
+    }
+
+    public String getGameID(){
+        return gameID;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +60,18 @@ public class FightActivity extends ActionBarActivity {
         selfMana1.setText(Integer.toString(0));
         selfMana2.setText(Integer.toString(0));
         selfMana3.setText(Integer.toString(0));
+        final String ID = getIntent().getStringExtra("ID");
+        gameID = ID;
+
+
+
         ImageView selfFace = (ImageView) findViewById(R.id.selfFace);
         ImageView enemyFace = (ImageView) findViewById(R.id.enemyFace);
 
         firebase = new Firebase(getResources().getString(R.string.firebase));
         gamesRef = firebase.child("games");
-        final String ID = getIntent().getStringExtra("ID");
+
+
         player = getIntent().getStringExtra("Player");
         if (player.equals("1")) {
             enemy = "2";
@@ -61,6 +83,13 @@ public class FightActivity extends ActionBarActivity {
             enemyFace.setImageResource(R.drawable.invoker_right);
             selfFace.setImageResource(R.drawable.invoker_left2);
         }
+
+
+        updatePlayerMapsFromDB();
+
+        //Log.w("Test MAPPING", player1Map.toString());
+        //Log.w("Test MAPPING", player2Map.get("games").toString());
+
 
         Button Flare = (Button) findViewById(R.id.spellFlareButton);
 
@@ -168,6 +197,9 @@ public class FightActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        Map m = player1Map;
+
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -177,4 +209,29 @@ public class FightActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void updatePlayerMapsFromDB(){
+        final Firebase gamesRef = firebase.child("games").child(gameID);
+        gamesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Map<String,Object> map = (Map<String,Object>) snapshot.child("player1").getValue();
+                Map<String,Object> map2 = (Map<String,Object>) snapshot.child("player2").getValue();
+                setPlayer1Map(map);
+                setPlayer2Map(map2);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+    }
+
+    public void pushPlayerMapstoDB(){
+        final Firebase gamesRef = firebase.child("games").child(gameID);
+        gamesRef.child("player1").setValue(player1Map);
+        gamesRef.child("player2").setValue(player2Map);
+    }
+
 }
