@@ -65,9 +65,15 @@ public class FightActivity extends ActionBarActivity {
         ImageButton spell_133 = (ImageButton) findViewById(R.id.spellExtractButton);   //Extract
         ImageButton spell_113 = (ImageButton) findViewById(R.id.spellManacombustButton);   //Manacombust
         ImageButton spell_123 = (ImageButton) findViewById(R.id.spellOvertapButton);   //Overtap
-        final ImageButton mainSpell = (ImageButton) findViewById(R.id.highlightSpellButton);   //Overtap
+        final ImageButton mainSpell = (ImageButton) findViewById(R.id.highlightSpellButton);
         final TextView mainSpellName = (TextView) findViewById(R.id.highlightSpellName);
         final TextView mainSpellDesc = (TextView) findViewById(R.id.highlightSpellDesc);
+        final ImageView manaCost1 = (ImageView) findViewById(R.id.manaCost1);
+        final ImageView manaCost2 = (ImageView) findViewById(R.id.manaCost2);
+        final ImageView manaCost3 = (ImageView) findViewById(R.id.manaCost3);
+        final ImageView manaAmp1 = (ImageView) findViewById(R.id.manaAmp1);
+        final ImageView manaAmp2 = (ImageView) findViewById(R.id.manaAmp2);
+        final ImageView manaAmp3 = (ImageView) findViewById(R.id.manaAmp3);
 
         enemyHealth = (TextView) findViewById(R.id.enemyHP);
         enemyHealth.setText(Integer.toString(60));
@@ -115,10 +121,10 @@ public class FightActivity extends ActionBarActivity {
                     selfAttack.setEnabled(true);
                     //alert player it's his turn
                     Toast.makeText(getBaseContext(), "It's your turn.", Toast.LENGTH_LONG).show();
-                    int mana1 = Integer.parseInt(selfMana1.getText().toString());
-                    //Map<String,Object> mana =(Map<String,Object>) player1Map.get("manaAmt");
 
+                    //Map<String,Object> mana =(Map<String,Object>) player1Map.get("manaAmt");
                     //int mana1 = Integer.parseInt(mana.get("0").toString());
+                    int mana1 = Integer.parseInt(selfMana1.getText().toString());
                     int mana2 = Integer.parseInt(selfMana2.getText().toString());
                     int mana3 = Integer.parseInt(selfMana3.getText().toString());
                     //start Roll mana
@@ -186,7 +192,10 @@ public class FightActivity extends ActionBarActivity {
                 mainSpell.setImageResource(R.drawable.s02_flare);
                 mainSpellName.setText("Flare");
                 mainSpellDesc.setText("Deal 6(R8)(R10) damage.  There is a 33% chance that the same amplification of Flare will be cast again for free.");
-                if (permission == 1) {
+                manaCost1.setImageResource(R.drawable.ml_red);
+                manaCost2.setImageResource(R.drawable.ml_red);
+                manaCost3.setImageResource(R.drawable.ml_red);
+                if (permission == 1){
                     //set active spell to main
                     Toast.makeText(getBaseContext(), "Trying to cast Flare.", Toast.LENGTH_SHORT).show();
                 }
@@ -199,6 +208,9 @@ public class FightActivity extends ActionBarActivity {
                 mainSpell.setImageResource(R.drawable.s09_explo);
                 mainSpellName.setText("Explosion");
                 mainSpellDesc.setText("Deal 15(R20)(R25) damage to your opponent and 10(Y9)(Y7) damage to yourself.");
+                manaCost1.setImageResource(R.drawable.ml_red_small);
+                manaCost2.setImageResource(R.drawable.ml_red_small);
+                manaCost3.setImageResource(R.drawable.ml_yellow_small);
                 if (permission == 1){
                     //set active spell to main
                     Toast.makeText(getBaseContext(), "Trying to cast Explosion.", Toast.LENGTH_SHORT).show();
