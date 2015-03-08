@@ -346,9 +346,11 @@ public class FightActivity extends ActionBarActivity {
                         mapEnemy = player1Map;
                     }
 
+                    List<Map<String,Object>> maps;
+
                     switch (mainSpell) {
                         case "111":
-                            List<Map<String,Object>> maps = Spells.Flare(mapSelf, mapEnemy, 0);
+                            maps = Spells.Flare(mapSelf, mapEnemy, 0);
                             if(player.equals("1")){
                                 player1Map = maps.get(0);
                                 player2Map = maps.get(1);
@@ -358,10 +360,17 @@ public class FightActivity extends ActionBarActivity {
                             }
                             permission = 0;
                             break;
-//                        case "222":
-//                            Spells.Bolt(mapSelf, mapEnemy, 0);
-//                            permission = 0;
-//                            break;
+                        case "222":
+                            maps = Spells.Bolt(mapSelf, mapEnemy, 0);
+                            if(player.equals("1")){
+                                player1Map = maps.get(0);
+                                player2Map = maps.get(1);
+                            }else{
+                                player2Map = maps.get(0);
+                                player1Map = maps.get(1);
+                            }
+                            permission = 0;
+                            break;
 //                        case "333":
 //                            Spells.Enlighten(mapSelf, mapEnemy, 0);
 //                            permission = 0;
@@ -395,6 +404,7 @@ public class FightActivity extends ActionBarActivity {
 //                            permission = 0;
 //                            break;
                     }
+                    pushPlayerMapstoDB();
                 }
             }
         });
