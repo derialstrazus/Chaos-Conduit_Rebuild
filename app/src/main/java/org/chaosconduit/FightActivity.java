@@ -218,13 +218,22 @@ public class FightActivity extends ActionBarActivity {
                 mainSpell.setImageResource(R.drawable.s02_flare);
                 mainSpellName.setText("Flare");
                 mainSpellDesc.setText("Deal 6(R8)(R10) damage.  There is a 33% chance that the same amplification of Flare will be cast again for free.");
-                manaCost1.setImageResource(R.drawable.ml_red);
-                manaCost2.setImageResource(R.drawable.ml_red);
-                manaCost3.setImageResource(R.drawable.ml_red);
+                manaCost1.setImageResource(R.drawable.ml_red_small);
+                manaCost2.setImageResource(R.drawable.ml_red_small);
+                manaCost3.setImageResource(R.drawable.ml_red_small);
                 if (permission == 1){
                     //set active spell to main
                     Toast.makeText(getBaseContext(), "Trying to cast Flare.", Toast.LENGTH_SHORT).show();
                 }
+                updatePlayerMapsFromDB();
+                Map<String, Object> map;
+                if (player.equals("1")) {
+                    map = player1Map;
+                } else {
+                    map = player2Map;
+                }
+                int currentHP = Integer.parseInt(map.get("health").toString());
+                selfHealth.setText(Integer.toString(currentHP));
             }
         });
 
