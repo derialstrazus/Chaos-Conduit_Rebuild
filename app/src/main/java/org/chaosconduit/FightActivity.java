@@ -77,8 +77,6 @@ public class FightActivity extends ActionBarActivity {
         final ImageView manaAmp2 = (ImageView) findViewById(R.id.manaAmp2);
         final ImageView manaAmp3 = (ImageView) findViewById(R.id.manaAmp3);
 
-
-
         enemyHealth = (TextView) findViewById(R.id.enemyHP);
         enemyHealth.setText(Integer.toString(60));
         selfHealth = (TextView) findViewById(R.id.selfHP);
@@ -170,13 +168,98 @@ public class FightActivity extends ActionBarActivity {
                                 break;
                         }
                     }
+                    //add Mana to map
                     selfMana1.setText(Integer.toString(mana1));
                     selfMana2.setText(Integer.toString(mana2));
                     selfMana3.setText(Integer.toString(mana3));
-                    if (mana1 + mana2 + mana3 > 5) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
-                        builder.setMessage("You have too much mana!");
+//                    if (mana1 + mana2 + mana3 > 5) {
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
+//                        builder.setMessage("You have too much mana!");
+//                    }
+                    //grey out spells that do not meet mana requirement
+                    if (mana1 > 3){
+                        spell_111.setEnabled(true);
+                        spell_111.setImageResource(R.drawable.s02_flare_small);
                     }
+                    else {
+                        spell_111.setEnabled(flase);
+                        spell_111.setImageResource(R.drawable.s02_flare_dim);
+                    }
+                    /*
+                    if (mana1 > 3){
+                        spell_111.setEnabled(true);
+                        spell_111.setImageResource(R.drawable.s02_flare_small);
+                    }
+                    else {
+                        spell_111.setEnabled(flase);
+                        spell_111.setImageResource(R.drawable.s02_flare_dim);
+                    }
+                    if (mana1 > 3){
+                        spell_111.setEnabled(true);
+                        spell_111.setImageResource(R.drawable.s02_flare_small);
+                    }
+                    else {
+                        spell_111.setEnabled(flase);
+                        spell_111.setImageResource(R.drawable.s02_flare_dim);
+                    }
+                    if (mana1 > 3){
+                        spell_111.setEnabled(true);
+                        spell_111.setImageResource(R.drawable.s02_flare_small);
+                    }
+                    else {
+                        spell_111.setEnabled(flase);
+                        spell_111.setImageResource(R.drawable.s02_flare_dim);
+                    }
+                    if (mana1 > 3){
+                        spell_111.setEnabled(true);
+                        spell_111.setImageResource(R.drawable.s02_flare_small);
+                    }
+                    else {
+                        spell_111.setEnabled(flase);
+                        spell_111.setImageResource(R.drawable.s02_flare_dim);
+                    }
+                    if (mana1 > 3){
+                        spell_111.setEnabled(true);
+                        spell_111.setImageResource(R.drawable.s02_flare_small);
+                    }
+                    else {
+                        spell_111.setEnabled(flase);
+                        spell_111.setImageResource(R.drawable.s02_flare_dim);
+                    }
+                    if (mana1 > 3){
+                        spell_111.setEnabled(true);
+                        spell_111.setImageResource(R.drawable.s02_flare_small);
+                    }
+                    else {
+                        spell_111.setEnabled(flase);
+                        spell_111.setImageResource(R.drawable.s02_flare_dim);
+                    }
+                    if (mana1 > 3){
+                        spell_111.setEnabled(true);
+                        spell_111.setImageResource(R.drawable.s02_flare_small);
+                    }
+                    else {
+                        spell_111.setEnabled(flase);
+                        spell_111.setImageResource(R.drawable.s02_flare_dim);
+                    }
+                    if (mana1 > 3){
+                        spell_111.setEnabled(true);
+                        spell_111.setImageResource(R.drawable.s02_flare_small);
+                    }
+                    else {
+                        spell_111.setEnabled(flase);
+                        spell_111.setImageResource(R.drawable.s02_flare_dim);
+                    }
+                    if (mana1 > 3){
+                        spell_111.setEnabled(true);
+                        spell_111.setImageResource(R.drawable.s02_flare_small);
+                    }
+                    else {
+                        spell_111.setEnabled(flase);
+                        spell_111.setImageResource(R.drawable.s02_flare_dim);
+                    }
+                    */
+
                 }
             }
 
@@ -234,9 +317,42 @@ public class FightActivity extends ActionBarActivity {
                             Spells.Flare(mapSelf, mapEnemy, 0);
                             permission = 0;
                             break;
+//                        case "222":
+//                            Spells.Bolt(mapSelf, mapEnemy, 0);
+//                            permission = 0;
+//                            break;
+//                        case "333":
+//                            Spells.Enlighten(mapSelf, mapEnemy, 0);
+//                            permission = 0;
+//                            break;
                         case "112":
+                            Spells.Explosion(mapSelf, mapEnemy, 0, 0);
                             permission = 0;
                             break;
+//                        case "122":
+//                            Spells.Suburst(mapSelf, mapEnemy, 0, 0);
+//                            permission = 0;
+//                            break;
+//                        case "113":
+//                            Spells.ManaCombustion(mapSelf, mapEnemy, 0, 0);
+//                            permission = 0;
+//                            break;
+//                        case "133":
+//                            Spells.ForcedExtraction(mapSelf, mapEnemy, 0, 0);
+//                            permission = 0;
+//                            break;
+//                        case "223":
+//                            Spells.TransformerBolt(mapSelf, mapEnemy, 0);
+//                            permission = 0;
+//                            break;
+//                        case "233":
+//                            Spells.ElectricPulse(mapSelf, mapEnemy, 0, 0);
+//                            permission = 0;
+//                            break;
+//                        case "123":
+//                            Spells.Overtap(mapSelf, mapEnemy, 0, 0, 0);
+//                            permission = 0;
+//                            break;
                     }
                 }
             }
@@ -251,16 +367,9 @@ public class FightActivity extends ActionBarActivity {
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_red_small);
                 manaCost3.setImageResource(R.drawable.ml_red_small);
-
                 mainSpell = "111";
-
-                if (permission == 1){
-                    //set active spell to main
-                    Toast.makeText(getBaseContext(), "Trying to cast Flare.", Toast.LENGTH_SHORT).show();
-                }
             }
         });
-
         spell_112.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -270,15 +379,108 @@ public class FightActivity extends ActionBarActivity {
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_red_small);
                 manaCost3.setImageResource(R.drawable.ml_yellow_small);
-
                 mainSpell = "112";
-
-                if (permission == 1){
-                    //set active spell to main
-                    Toast.makeText(getBaseContext(), "Trying to cast Explosion.", Toast.LENGTH_SHORT).show();
-                }
             }
         });
+
+//        /*
+        spell_122.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainSpellReady.setImageResource(R.drawable.s10_suburst);
+                mainSpellName.setText("Suburst");
+                mainSpellDesc.setText("If you have never casted Suburst this game, deal 20 damage.  Otherwise, deal 0 damage.");
+                manaCost1.setImageResource(R.drawable.ml_red_small);
+                manaCost2.setImageResource(R.drawable.ml_yellow_small);
+                manaCost3.setImageResource(R.drawable.ml_yellow_small);
+                mainSpell = "122";
+            }
+        });
+        spell_222.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainSpellReady.setImageResource(R.drawable.s03_bolt);
+                mainSpellName.setText("Bolt");
+                mainSpellDesc.setText("Deal 10(Y15)(Y20) damage.  This damage cannot be blocked and your opponent cannot heal next turn.");
+                manaCost1.setImageResource(R.drawable.ml_yellow_small);
+                manaCost2.setImageResource(R.drawable.ml_yellow_small);
+                manaCost3.setImageResource(R.drawable.ml_yellow_small);
+                mainSpell = "222";
+            }
+        });
+        spell_223.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainSpellReady.setImageResource(R.drawable.s27_transformer);
+                mainSpellName.setText("Transformer Bolt");
+                mainSpellDesc.setText("Deal 8(X10)(X16) damage.  Use any mana source to amp damage.");
+                manaCost1.setImageResource(R.drawable.ml_yellow_small);
+                manaCost2.setImageResource(R.drawable.ml_yellow_small);
+                manaCost3.setImageResource(R.drawable.ml_blue_small);
+                mainSpell = "223";
+            }
+        });
+        spell_233.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainSpellReady.setImageResource(R.drawable.s28_pulse);
+                mainSpellName.setText("Electric Pulse");
+                mainSpellDesc.setText("Deal 5(Y7)(Y10) damage.  Your opponent must discard 2(B3)(B4) mana.");
+                manaCost1.setImageResource(R.drawable.ml_yellow_small);
+                manaCost2.setImageResource(R.drawable.ml_blue_small);
+                manaCost3.setImageResource(R.drawable.ml_blue_small);
+                mainSpell = "233";
+            }
+        });
+        spell_333.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainSpellReady.setImageResource(R.drawable.s05_enlighten);
+                mainSpellName.setText("Enlighten");
+                mainSpellDesc.setText("Increase max mana pool by 1(B2)");
+                manaCost1.setImageResource(R.drawable.ml_blue_small);
+                manaCost2.setImageResource(R.drawable.ml_blue_small);
+                manaCost3.setImageResource(R.drawable.ml_blue_small);
+                mainSpell = "333";
+            }
+        });
+        spell_113.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainSpellReady.setImageResource(R.drawable.s13_manacombust);
+                mainSpellName.setText("Mana Combustion");
+                mainSpellDesc.setText("Deal 3(R4)(R5) damage for each mana present in target's mana pool.  Target removes 0(U1)(U2) mana from his pool.");
+                manaCost1.setImageResource(R.drawable.ml_red_small);
+                manaCost2.setImageResource(R.drawable.ml_red_small);
+                manaCost3.setImageResource(R.drawable.ml_blue_small);
+                mainSpell = "113";
+            }
+        });
+        spell_133.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainSpellReady.setImageResource(R.drawable.s14_forcedextract);
+                mainSpellName.setText("Forced Extraction");
+                mainSpellDesc.setText("Steal 1(BB2) mana and deal 5(Y7)(Y10) damage");
+                manaCost1.setImageResource(R.drawable.ml_red_small);
+                manaCost2.setImageResource(R.drawable.ml_blue_small);
+                manaCost3.setImageResource(R.drawable.ml_blue_small);
+                mainSpell = "133";
+            }
+        });
+        spell_123.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainSpellReady.setImageResource(R.drawable.s42_overtap);
+                mainSpellName.setText("Overtap");
+                mainSpellDesc.setText("Deal 7(R9)(R12) + 7(Y9)(Y12) damage.  You roll 2(B1)(B0) less mana next turn.");
+                manaCost1.setImageResource(R.drawable.ml_red_small);
+                manaCost2.setImageResource(R.drawable.ml_yellow_small);
+                manaCost3.setImageResource(R.drawable.ml_blue_small);
+                mainSpell = "123";
+            }
+        });
+//        */
 
         /*enemyPass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -372,8 +574,8 @@ public class FightActivity extends ActionBarActivity {
         gamesRef.child("player2").setValue(player2Map);
     }
 
-    public void setMainSpell(String spell){
-        mainSpell = spell;
-    }
+//    public void setMainSpell(String spell){
+//        mainSpell = spell;
+//    }
 
 }
