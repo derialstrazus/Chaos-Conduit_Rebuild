@@ -1,5 +1,6 @@
 package org.chaosconduit;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import com.firebase.client.AuthData;
@@ -63,8 +64,16 @@ public class Spells {
             enemyHealth = enemyHealth - damage;
             chance = flareChance.nextInt(3) + 1;
             flareCount++;
-//            Toast.makeText(getBaseContext(), ("Flare Triggered %d times", flareCount), Toast.LENGTH_SHORT.show());
+            Log.w("FLARE","Flare Triggered " + flareCount + " times");
+            //Toast.makeText(getBaseContext(), ("Flare Triggered %d times", flareCount), Toast.LENGTH_SHORT.show());
         }
+
+        int redManaCost = 3 + redAmp;
+        ArrayList<Long> selfManaCnt = (ArrayList<Long>) mapSelf.get("manaAmt");
+        long currentMana = selfManaCnt.get(0);
+        currentMana -= redManaCost;
+        selfManaCnt.set(0,currentMana);
+        mapSelf.put("manaAmt",selfManaCnt);
 
         mapEnemy.put("health", enemyHealth);
         maps.add(mapSelf);
@@ -117,6 +126,9 @@ public class Spells {
         List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
         int enemyHealth = Integer.parseInt(mapEnemy.get("health").toString());
         int selfHealth = Integer.parseInt(mapSelf.get("health").toString());
+
+
+
         int damage = 15, damageSelf = 10;
 
         if (redAmp == 1) {
@@ -142,22 +154,22 @@ public class Spells {
         return maps;
     }
 
-//    public static List Sunburst(Map<String, Object> mapSelf,
-//                                Map<String, Object> mapEnemy,
-//                                int redAmp,
-//                                int yellowAmp) {
-//        List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
-//        int enemyHealth = Integer.parseInt(mapEnemy.get("health").toString());
-//        int selfSunburstHist = Integer.parseInt(mapSelf.get("sunburstHist").toString());
-//        int damage = 20;
-//
-//        enemyHealth = enemyHealth - damage;
-//        mapEnemy.put("health", enemyHealth);
-//        mapSelf.put("sunburstHist", "1");
-//        maps.add(mapSelf);
-//        maps.add(mapEnemy);
-//        return maps;
-//    }
+    public static List Sunburst(Map<String, Object> mapSelf,
+                                Map<String, Object> mapEnemy,
+                                int redAmp,
+                                int yellowAmp) {
+        List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
+        int enemyHealth = Integer.parseInt(mapEnemy.get("health").toString());
+        int selfSunburstHist = Integer.parseInt(mapSelf.get("sunburstHist").toString());
+        int damage = 20;
+
+        enemyHealth = enemyHealth - damage;
+        mapEnemy.put("health", enemyHealth);
+        mapSelf.put("sunburstHist", "1");
+        maps.add(mapSelf);
+        maps.add(mapEnemy);
+        return maps;
+    }
 
 //    public static List ManaCombustion(Map<String, Object> mapSelf,
 //                                 Map<String, Object> mapEnemy,

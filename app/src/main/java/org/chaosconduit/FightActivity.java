@@ -21,6 +21,8 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -124,17 +126,13 @@ public class FightActivity extends ActionBarActivity {
                     permission = 1;
                     selfAttack.setEnabled(true);
 
+                    Map<String, Object> map;
+
                     if(start == false) {
-                        Map<String, Object> map;
-                        if (player.equals("1")) {
-                            map = player1Map;
-                        } else {
-                            map = player2Map;
-                        }
-                        int currentHP = Integer.parseInt(map.get("health").toString());
-                        selfHealth.setText(Integer.toString(currentHP));
+
+
                     }
-                    start = false;
+
                     //alert player it's his turn
 //                    Map<String, Object> map;
 //                    if (player.equals("1")) {
@@ -147,44 +145,57 @@ public class FightActivity extends ActionBarActivity {
 
                     Toast.makeText(getBaseContext(), "It's your turn.", Toast.LENGTH_SHORT).show();
 
-                    //Map<String,Object> mana =(Map<String,Object>) player1Map.get("manaAmt");
-                    //int mana1 = Integer.parseInt(mana.get("0").toString());
-                    int mana1 = Integer.parseInt(selfMana1.getText().toString());
-                    int mana2 = Integer.parseInt(selfMana2.getText().toString());
-                    int mana3 = Integer.parseInt(selfMana3.getText().toString());
-                    //start Roll mana
-                    Random randMana = new Random();
-                    for (int i = 0; i < 3; i++) {
-                        int rolledMana = randMana.nextInt(3) + 1;
-                        switch (rolledMana) {
-                            case 1:
-                                mana1++;
-                                break;
-                            case 2:
-                                mana2++;
-                                break;
-                            case 3:
-                                mana3++;
-                                break;
+                    if(start == false) {
+
+                        if (player.equals("1")) {
+                            map = player1Map;
+                        } else {
+                            map = player2Map;
                         }
+                        int currentHP = Integer.parseInt(map.get("health").toString());
+                        selfHealth.setText(Integer.toString(currentHP));
+
+                        ArrayList<Long> mana = (ArrayList<Long>) map.get("manaAmt");
+                        //int mana1 = Integer.parseInt(mana.get("0").toString());
+
+                        //start Roll mana
+                        Random randMana = new Random();
+                        for (int i = 0; i < 3; i++) {
+                            int rolledMana = randMana.nextInt(3) + 1;
+                            switch (rolledMana) {
+                                case 1:
+                                    mana.set(0, mana.get(0) + 1);
+                                    break;
+                                case 2:
+                                    mana.set(1, mana.get(1) + 1);
+                                    break;
+                                case 3:
+                                    mana.set(2, mana.get(2) + 1);
+                                    break;
+                            }
+                        }
+                        //add Mana to map
+                        selfMana1.setText(Long.toString(mana.get(0)));
+                        selfMana2.setText(Long.toString(mana.get(1)));
+                        selfMana3.setText(Long.toString(mana.get(2)));
+
+                        map.put("manaAmt", mana);
                     }
-                    //add Mana to map
-                    selfMana1.setText(Integer.toString(mana1));
-                    selfMana2.setText(Integer.toString(mana2));
-                    selfMana3.setText(Integer.toString(mana3));
+                    start = false;
+
 //                    if (mana1 + mana2 + mana3 > 5) {
 //                        AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
 //                        builder.setMessage("You have too much mana!");
 //                    }
                     //grey out spells that do not meet mana requirement
-                    if (mana1 > 3){
+                    /*if (mana1 > 3){
                         spell_111.setEnabled(true);
                         spell_111.setImageResource(R.drawable.s02_flare_small);
                     }
                     else {
                         spell_111.setEnabled(false);
                         spell_111.setImageResource(R.drawable.s02_flare_dim);
-                    }
+                    }*/
                     /*
                     if (mana1 > 3){
                         spell_111.setEnabled(true);
@@ -314,7 +325,14 @@ public class FightActivity extends ActionBarActivity {
 
                     switch (mainSpell) {
                         case "111":
-                            Spells.Flare(mapSelf, mapEnemy, 0);
+                            List<Map<String,Object>> maps = Spells.Flare(mapSelf, mapEnemy, 0);
+                            if(player.equals("1")){
+                                player1Map = maps.get(0);
+                                player2Map = maps.get(1);
+                            }else{
+                                player2Map = maps.get(0);
+                                player1Map = maps.get(1);
+                            }
                             permission = 0;
                             break;
 //                        case "222":
@@ -354,6 +372,10 @@ public class FightActivity extends ActionBarActivity {
 //                            permission = 0;
 //                            break;
                     }
+                    //enemyHealth.setText(Integer.toString(finalEnemyHP));
+                    pushPlayerMapstoDB();
+                    gamesRef.child(ID).child("turn").setValue(enemy);
+                    selfAttack.setEnabled(false);
                 }
             }
         });
