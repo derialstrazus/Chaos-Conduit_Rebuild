@@ -459,30 +459,30 @@ public class FightActivity extends ActionBarActivity {
                             permission = 0;
                             gamesRef.child(ID).child("lastSpell").setValue("Forced Extraction");
                             break;
-//                        case "223":
-//                            maps = Spells.TransformerBolt(mapSelf, mapEnemy, 0, 0);
-//                            if(player.equals("1")){
-//                                player1Map = maps.get(0);
-//                                player2Map = maps.get(1);
-//                            }else{
-//                                player2Map = maps.get(0);
-//                                player1Map = maps.get(1);
-//                            }
-//                            permission = 0;
-//                            gamesRef.child(ID).child("lastSpell").setValue("Transformer Bolt");
-//                            break;
-//                        case "233":
-//                            maps = Spells.ElectricPulse(mapSelf, mapEnemy, 0, 0);
-//                            if(player.equals("1")){
-//                                player1Map = maps.get(0);
-//                                player2Map = maps.get(1);
-//                            }else{
-//                                player2Map = maps.get(0);
-//                                player1Map = maps.get(1);
-//                            }
-//                            permission = 0;
-//                            gamesRef.child(ID).child("lastSpell").setValue("Electric Pulse");
-//                            break;
+                        case "223":
+                            maps = Spells.TransformerBolt(mapSelf, mapEnemy, 0);
+                            if(player.equals("1")){
+                                player1Map = maps.get(0);
+                                player2Map = maps.get(1);
+                            }else{
+                                player2Map = maps.get(0);
+                                player1Map = maps.get(1);
+                            }
+                            permission = 0;
+                            gamesRef.child(ID).child("lastSpell").setValue("Transformer Bolt");
+                            break;
+                        case "233":
+                            maps = Spells.ElectricPulse(mapSelf, mapEnemy, 0, 0);
+                            if(player.equals("1")){
+                                player1Map = maps.get(0);
+                                player2Map = maps.get(1);
+                            }else{
+                                player2Map = maps.get(0);
+                                player1Map = maps.get(1);
+                            }
+                            permission = 0;
+                            gamesRef.child(ID).child("lastSpell").setValue("Electric Pulse");
+                            break;
 //                        case "123":
 //                            maps = Spells.Overtap(mapSelf, mapEnemy, 0, 0, 0);
 //                            if(player.equals("1")){
