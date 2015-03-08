@@ -7,7 +7,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.25" >
+        android:layout_weight="0.20"
+        android:background="#ffdfdfdf">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -15,29 +16,28 @@
             android:id="@+id/enemyFace"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/invoker_right2" />
+            android:src="@drawable/invoker_right2"
+            android:padding="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="HP"
             android:id="@+id/enemyHPText"
-            android:layout_below="@+id/enemyFace"
-            android:layout_alignStart="@+id/enemyFace"
             android:textSize="20dp"
-            android:paddingTop="5dp"
-            android:paddingLeft="5dp" />
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/enemyHP"
+            android:padding="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="60"
             android:id="@+id/enemyHP"
-            android:layout_below="@+id/enemyFace"
-            android:layout_toEndOf="@+id/enemyHPText"
-            android:paddingTop="5dp"
-            android:paddingLeft="5dp"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/enemyFace"
+            android:padding="10dp" />
 
         <Button
             android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.50"
+        android:layout_weight="0.55"
         android:layout_alignParentTop="false"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true">
@@ -165,9 +165,8 @@
             android:paddingTop="5dp"
             android:paddingRight="5dp"
             android:paddingBottom="5dp"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/spellFlareButton"
-            android:layout_above="@+id/highlightSpellButton" />
+            android:layout_above="@+id/highlightSpellButton"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -181,7 +180,7 @@
             android:paddingTop="5dp"
             android:paddingRight="5dp"
             android:paddingBottom="5dp"
-            android:layout_below="@+id/manaAmp1" />
+            android:layout_below="@+id/highlightSpellButton" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -242,7 +241,8 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.25">
+        android:layout_weight="0.25"
+        android:background="#ffdfdfdf">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -250,7 +250,8 @@
             android:id="@+id/selfFace"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:src="@drawable/invoker_left" />
+            android:src="@drawable/invoker_left"
+            android:paddingLeft="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -260,8 +261,7 @@
             android:layout_below="@+id/selfFace"
             android:layout_alignLeft="@+id/selfFace"
             android:textSize="20dp"
-            android:paddingTop="5dp"
-            android:paddingLeft="5dp" />
+            android:padding="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -270,9 +270,8 @@
             android:id="@+id/selfHP"
             android:layout_below="@+id/selfFace"
             android:layout_toEndOf="@+id/selfHPText"
-            android:paddingTop="5dp"
-            android:paddingLeft="5dp"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:padding="5dp" />
 
         <Button
             android:layout_width="wrap_content"

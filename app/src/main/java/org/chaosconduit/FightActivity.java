@@ -33,6 +33,7 @@ public class FightActivity extends ActionBarActivity {
     TextView selfMana1, selfMana2, selfMana3;
     Firebase firebase, gamesRef;
     String player, enemy;
+    String mainSpell = "000";
     String gameID;
     Map<String,Object> player1Map, player2Map;
 
@@ -66,7 +67,7 @@ public class FightActivity extends ActionBarActivity {
         ImageButton spell_133 = (ImageButton) findViewById(R.id.spellExtractButton);   //Extract
         ImageButton spell_113 = (ImageButton) findViewById(R.id.spellManacombustButton);   //Manacombust
         ImageButton spell_123 = (ImageButton) findViewById(R.id.spellOvertapButton);   //Overtap
-        final ImageButton mainSpell = (ImageButton) findViewById(R.id.highlightSpellButton);
+        final ImageButton mainSpellReady = (ImageButton) findViewById(R.id.highlightSpellButton);
         final TextView mainSpellName = (TextView) findViewById(R.id.highlightSpellName);
         final TextView mainSpellDesc = (TextView) findViewById(R.id.highlightSpellDesc);
         final ImageView manaCost1 = (ImageView) findViewById(R.id.manaCost1);
@@ -75,6 +76,8 @@ public class FightActivity extends ActionBarActivity {
         final ImageView manaAmp1 = (ImageView) findViewById(R.id.manaAmp1);
         final ImageView manaAmp2 = (ImageView) findViewById(R.id.manaAmp2);
         final ImageView manaAmp3 = (ImageView) findViewById(R.id.manaAmp3);
+
+
 
         enemyHealth = (TextView) findViewById(R.id.enemyHP);
         enemyHealth.setText(Integer.toString(60));
@@ -212,40 +215,64 @@ public class FightActivity extends ActionBarActivity {
             }
         });
 
+        mainSpellReady.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (permission == 1){
+//                    Toast.makeText(getBaseContext(), "Trying to cast Flare.", Toast.LENGTH_SHORT).show();
+                    Map<String,Object> mapSelf, mapEnemy;
+                    if(player.equals("1")){
+                        mapSelf = player1Map;
+                        mapEnemy = player2Map;
+                    }else{
+                        mapSelf = player2Map;
+                        mapEnemy = player1Map;
+                    }
+
+                    switch (mainSpell) {
+                        case "111":
+                            Spells.Flare(mapSelf, mapEnemy, 0);
+                            permission = 0;
+                            break;
+                        case "112":
+                            permission = 0;
+                            break;
+                    }
+                }
+            }
+        });
+
         spell_111.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainSpell.setImageResource(R.drawable.s02_flare);
+                mainSpellReady.setImageResource(R.drawable.s02_flare);
                 mainSpellName.setText("Flare");
                 mainSpellDesc.setText("Deal 6(R8)(R10) damage.  There is a 33% chance that the same amplification of Flare will be cast again for free.");
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_red_small);
                 manaCost3.setImageResource(R.drawable.ml_red_small);
+
+                mainSpell = "111";
+
                 if (permission == 1){
                     //set active spell to main
                     Toast.makeText(getBaseContext(), "Trying to cast Flare.", Toast.LENGTH_SHORT).show();
                 }
-                updatePlayerMapsFromDB();
-                Map<String, Object> map;
-                if (player.equals("1")) {
-                    map = player1Map;
-                } else {
-                    map = player2Map;
-                }
-                int currentHP = Integer.parseInt(map.get("health").toString());
-                selfHealth.setText(Integer.toString(currentHP));
             }
         });
 
         spell_112.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainSpell.setImageResource(R.drawable.s09_explo);
+                mainSpellReady.setImageResource(R.drawable.s09_explo);
                 mainSpellName.setText("Explosion");
                 mainSpellDesc.setText("Deal 15(R20)(R25) damage to your opponent and 10(Y9)(Y7) damage to yourself.");
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_red_small);
                 manaCost3.setImageResource(R.drawable.ml_yellow_small);
+
+                mainSpell = "112";
+
                 if (permission == 1){
                     //set active spell to main
                     Toast.makeText(getBaseContext(), "Trying to cast Explosion.", Toast.LENGTH_SHORT).show();
@@ -317,18 +344,19 @@ public class FightActivity extends ActionBarActivity {
 
     public void updatePlayerMapsFromDB(){
         final Firebase gamesRef = firebase.child("games").child(gameID);
-        gamesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        //gamesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        gamesRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-               try {
-                   Map<String, Object> map = (Map<String, Object>) snapshot.child("player1").getValue();
-                   Map<String, Object> map2 = (Map<String, Object>) snapshot.child("player2").getValue();
-                   setPlayer1Map(map);
-                   setPlayer2Map(map2);
-               }catch(Exception e){
-                   Log.w("UPDATE MAPS","TRY AGAIN!");
-                   updatePlayerMapsFromDB();
-               }
+                try {
+                    Map<String, Object> map = (Map<String, Object>) snapshot.child("player1").getValue();
+                    Map<String, Object> map2 = (Map<String, Object>) snapshot.child("player2").getValue();
+                    setPlayer1Map(map);
+                    setPlayer2Map(map2);
+                } catch (Exception e) {
+                    Log.w("UPDATE MAPS", "TRY AGAIN!");
+                    updatePlayerMapsFromDB();
+                }
             }
 
             @Override
@@ -342,6 +370,10 @@ public class FightActivity extends ActionBarActivity {
         final Firebase gamesRef = firebase.child("games").child(gameID);
         gamesRef.child("player1").setValue(player1Map);
         gamesRef.child("player2").setValue(player2Map);
+    }
+
+    public void setMainSpell(String spell){
+        mainSpell = spell;
     }
 
 }
