@@ -157,9 +157,20 @@ public class FightActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (permission == 1) {
+                    Map<String,Object> map;
+                    if(player.equals("2")){
+                        map = player1Map;
+                    }else{
+                        map = player2Map;
+                    }
+
+
                     int damage = 3;
-                    int currentHP = Integer.parseInt(enemyHealth.getText().toString());
+                    int currentHP = (int) map.get("health");//Integer.parseInt(enemyHealth.getText().toString());
                     int finalHP = currentHP - damage;
+                    map.put("health",finalHP);
+
+                    pushPlayerMapstoDB();
                     //String send = Integer.toString(finalHP);
                     enemyHealth.setText(Integer.toString(finalHP));
                     gamesRef.child(ID).child("turn").setValue(enemy);
@@ -175,7 +186,7 @@ public class FightActivity extends ActionBarActivity {
                 mainSpell.setImageResource(R.drawable.s02_flare);
                 mainSpellName.setText("Flare");
                 mainSpellDesc.setText("Deal 6(R8)(R10) damage.  There is a 33% chance that the same amplification of Flare will be cast again for free.");
-                if (permission == 1){
+                if (permission == 1) {
                     //set active spell to main
                     Toast.makeText(getBaseContext(), "Trying to cast Flare.", Toast.LENGTH_SHORT).show();
                 }
@@ -245,7 +256,6 @@ public class FightActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        Map m = player1Map;
 
 
         int id = item.getItemId();
@@ -263,10 +273,15 @@ public class FightActivity extends ActionBarActivity {
         gamesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                Map<String,Object> map = (Map<String,Object>) snapshot.child("player1").getValue();
-                Map<String,Object> map2 = (Map<String,Object>) snapshot.child("player2").getValue();
-                setPlayer1Map(map);
-                setPlayer2Map(map2);
+               try {
+                   Map<String, Object> map = (Map<String, Object>) snapshot.child("player1").getValue();
+                   Map<String, Object> map2 = (Map<String, Object>) snapshot.child("player2").getValue();
+                   setPlayer1Map(map);
+                   setPlayer2Map(map2);
+               }catch(Exception e){
+                   Log.w("UPDATE MAPS","TRY AGAIN!");
+                   updatePlayerMapsFromDB();
+               }
             }
 
             @Override
