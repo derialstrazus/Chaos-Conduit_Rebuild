@@ -22,6 +22,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -79,6 +80,18 @@ public class FightActivity extends ActionBarActivity {
         final ImageView manaAmp2 = (ImageView) findViewById(R.id.manaAmp2);
         final ImageView manaAmp3 = (ImageView) findViewById(R.id.manaAmp3);
 
+        Map<String,Object> map = new HashMap<>();
+        ArrayList<Long> manaCnt = new ArrayList<>();
+        for (int i = 0; i < 3; i++){
+            manaCnt.add((long)0);
+        }
+        map.put("manaAmt", manaCnt);
+        map.put("health", 60);
+        map.put("turn", 1);
+
+        setPlayer1Map(map);
+        setPlayer2Map(map);
+
         enemyHealth = (TextView) findViewById(R.id.enemyHP);
         enemyHealth.setText(Integer.toString(60));
         selfHealth = (TextView) findViewById(R.id.selfHP);
@@ -122,18 +135,13 @@ public class FightActivity extends ActionBarActivity {
         gamesRef.child(ID).child("turn").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                updatePlayerMapsFromDB();
                 if (dataSnapshot.getValue().toString().equals(player)) {
                     //YOUR NEW TURN STARTS!
-                    updatePlayerMapsFromDB();
                     permission = 1;
                     selfAttack.setEnabled(true);
 
                     Map<String, Object> map;
-
-                    if(start == false) {
-
-
-                    }
 
                     //alert player it's his turn
 //                    Map<String, Object> map;
@@ -147,7 +155,7 @@ public class FightActivity extends ActionBarActivity {
 
                     Toast.makeText(getBaseContext(), "It's your turn.", Toast.LENGTH_SHORT).show();
 
-                    if(start == false) {
+                   // if(start == false) {
 
                         if (player.equals("1")) {
                             map = player1Map;
@@ -278,7 +286,7 @@ public class FightActivity extends ActionBarActivity {
                             spell_123.setEnabled(false);
                             spell_123.setImageResource(R.drawable.s42_overtap_dim);
                         }
-                    }
+                   // }
                     start = false;
 
 //                    if (mana1 + mana2 + mana3 > 5) {
