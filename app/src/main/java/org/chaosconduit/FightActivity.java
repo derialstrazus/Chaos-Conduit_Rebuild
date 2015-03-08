@@ -314,7 +314,7 @@ public class FightActivity extends ActionBarActivity {
                             spell_133.setEnabled(false);
                             spell_133.setImageResource(R.drawable.s14_forcedextract_dim);
                         }
-                        if ((mana1 >= 1) && (mana2 >= 1) && (mana3 >= 1)){
+                        if ((mana1 >= 2) && (mana2 >= 2) && (mana3 >= 2)){
                             spell_123.setEnabled(true);
                             spell_123.setImageResource(R.drawable.s42_overtap_small);
                         }
@@ -434,17 +434,17 @@ public class FightActivity extends ActionBarActivity {
                             permission = 0;
                             gamesRef.child(ID).child("lastSpell").setValue("Explosion");
                             break;
-//                        case "122":
-//                            maps = Spells.Sunburst(mapSelf, mapEnemy, 0, 0);
-//                            if(player.equals("1")){
-//                                player1Map = maps.get(0);
-//                                player2Map = maps.get(1);
-//                            }else{
-//                                player2Map = maps.get(0);
-//                                player1Map = maps.get(1);
-//                            }
-//                            permission = 0;
-//                            break;
+                        case "122":
+                            maps = Spells.Sunburst(mapSelf, mapEnemy, 0, 0);
+                            if(player.equals("1")){
+                                player1Map = maps.get(0);
+                                player2Map = maps.get(1);
+                            }else{
+                                player2Map = maps.get(0);
+                                player1Map = maps.get(1);
+                            }
+                            permission = 0;
+                            break;
                         case "113":
                             maps = Spells.ManaCombustion(mapSelf, mapEnemy, 0, 0);
                             if(player.equals("1")){
@@ -546,7 +546,7 @@ public class FightActivity extends ActionBarActivity {
             public void onClick(View v) {
                 mainSpellReady.setImageResource(R.drawable.s10_suburst);
                 mainSpellName.setText("Suburst");
-                mainSpellDesc.setText("If you have never casted Suburst this game, deal 20 damage.  Otherwise, deal 0 damage.");
+                mainSpellDesc.setText("Heal 20");
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_yellow_small);
                 manaCost3.setImageResource(R.drawable.ml_yellow_small);
@@ -570,7 +570,7 @@ public class FightActivity extends ActionBarActivity {
             public void onClick(View v) {
                 mainSpellReady.setImageResource(R.drawable.s27_transformer);
                 mainSpellName.setText("Transformer Bolt");
-                mainSpellDesc.setText("Deal 8(X10)(X16) damage.  Use any mana source to amp damage.");
+                mainSpellDesc.setText("Deal 5 damage multiply by your remaining mana pool.  Your pool is drained afterwards.");
                 manaCost1.setImageResource(R.drawable.ml_yellow_small);
                 manaCost2.setImageResource(R.drawable.ml_yellow_small);
                 manaCost3.setImageResource(R.drawable.ml_blue_small);
@@ -582,7 +582,8 @@ public class FightActivity extends ActionBarActivity {
             public void onClick(View v) {
                 mainSpellReady.setImageResource(R.drawable.s28_pulse);
                 mainSpellName.setText("Electric Pulse");
-                mainSpellDesc.setText("Deal 5(Y7)(Y10) damage.  Your opponent must discard 2(B3)(B4) mana.");
+//                mainSpellDesc.setText("Deal 5(Y7)(Y10) damage.  Your opponent must discard 2(B3)(B4) mana.");
+                mainSpellDesc.setText("Deal 5 damage.  Your opponent must discard 2 mana.");
                 manaCost1.setImageResource(R.drawable.ml_yellow_small);
                 manaCost2.setImageResource(R.drawable.ml_blue_small);
                 manaCost3.setImageResource(R.drawable.ml_blue_small);
@@ -606,7 +607,7 @@ public class FightActivity extends ActionBarActivity {
             public void onClick(View v) {
                 mainSpellReady.setImageResource(R.drawable.s13_manacombust);
                 mainSpellName.setText("Mana Combustion");
-                mainSpellDesc.setText("Deal 3(R4)(R5) damage for each mana present in target's mana pool.");
+                mainSpellDesc.setText("Deal 3 damage for each mana present in target's mana pool.");
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_red_small);
                 manaCost3.setImageResource(R.drawable.ml_blue_small);
@@ -618,7 +619,7 @@ public class FightActivity extends ActionBarActivity {
             public void onClick(View v) {
                 mainSpellReady.setImageResource(R.drawable.s14_forcedextract);
                 mainSpellName.setText("Forced Extraction");
-                mainSpellDesc.setText("Steal 1(BB2) mana and deal 5(Y7)(Y10) damage");
+                mainSpellDesc.setText("Steal 1 mana and deal 5 damage");
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_blue_small);
                 manaCost3.setImageResource(R.drawable.ml_blue_small);
@@ -630,10 +631,13 @@ public class FightActivity extends ActionBarActivity {
             public void onClick(View v) {
                 mainSpellReady.setImageResource(R.drawable.s42_overtap);
                 mainSpellName.setText("Overtap");
-                mainSpellDesc.setText("Deal 7(R9)(R12) + 7(Y9)(Y12) damage.  You roll 2(B1)(B0) less mana next turn.");
+                mainSpellDesc.setText("Deal 26 damage.");
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_yellow_small);
                 manaCost3.setImageResource(R.drawable.ml_blue_small);
+                manaAmp1.setImageResource(R.drawable.ml_red_small);
+                manaAmp2.setImageResource(R.drawable.ml_yellow_small);
+                manaAmp3.setImageResource(R.drawable.ml_blue_small);
                 mainSpell = "123";
             }
         });
