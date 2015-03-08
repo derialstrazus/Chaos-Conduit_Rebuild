@@ -64,7 +64,7 @@ public class Spells {
             enemyHealth = enemyHealth - damage;
             chance = flareChance.nextInt(3) + 1;
             flareCount++;
-            Log.w("FLARE","Flare Triggered " + flareCount + " times");
+            //Log.w("FLARE","Flare Triggered " + flareCount + " times");
             //Toast.makeText(getBaseContext(), ("Flare Triggered %d times", flareCount), Toast.LENGTH_SHORT.show());
         }
 
@@ -100,9 +100,9 @@ public class Spells {
         enemyHealth = enemyHealth - damage;
 
         ArrayList<Long> selfMana = (ArrayList<Long>) mapSelf.get("manaAmt");
-        long selfRedMana = selfMana.get(0);
+//        long selfRedMana = selfMana.get(0);
         long selfYellowMana = selfMana.get(1);
-        long selfBlueMana = selfMana.get(2);
+//        long selfBlueMana = selfMana.get(2);
 //        selfRedMana = selfRedMana - (0 + redAmp);
         selfYellowMana = selfYellowMana - (3 + yellowAmp);
 //        selfBlueMana = selfBlueMana - (0 + blueAmp);
@@ -118,23 +118,51 @@ public class Spells {
         return maps;
     }
 
-//    public static List Enlighten(Map<String, Object> mapSelf,
-//                                 Map<String, Object> mapEnemy,
-//                                 int blueAmp) {
-//        List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
-//        int selfMaxMana = Integer.parseInt(mapSelf.get("MaxMana").toString());
-//        int manaCap = 1;
-//
-//        if (blueAmp == 1) {
-//            manaCap = 2;
-//        }
-//
-//        selfMaxMana = selfMaxMana + manaCap;
-//        mapSelf.put("MaxMana", selfMaxMana);
-//        maps.add(mapSelf);
-//        maps.add(mapEnemy);
-//        return maps;
-//    }
+    public static List Enlighten(Map<String, Object> mapSelf,
+                                 Map<String, Object> mapEnemy,
+                                 int blueAmp) {
+        List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
+        ArrayList<Long> selfMana = (ArrayList<Long>) mapSelf.get("manaAmt");
+        long selfRedMana = selfMana.get(0);
+        long selfYellowMana = selfMana.get(1);
+        long selfBlueMana = selfMana.get(2);
+
+        int rollAmount = 7;
+        if (blueAmp == 1) {
+            rollAmount = 10;
+        }
+        else if (blueAmp == 2) {
+            rollAmount = 15;
+        }
+
+        Random randMana = new Random();
+        for (int i = 0; i < rollAmount; i++) {
+            int rolledMana = randMana.nextInt(3) + 1;
+            switch (rolledMana) {
+                case 1:
+                    selfRedMana++;
+                    break;
+                case 2:
+                    selfYellowMana++;
+                    break;
+                case 3:
+                    selfBlueMana++;
+                    break;
+            }
+        }
+
+        selfRedMana = selfRedMana - (0);
+        selfYellowMana = selfYellowMana - (0);
+        selfBlueMana = selfBlueMana - (3 + blueAmp);
+        selfMana.set(0, selfRedMana);
+        selfMana.set(1, selfYellowMana);
+        selfMana.set(2, selfBlueMana);
+        mapSelf.put("manaAmt",selfMana);
+
+        maps.add(mapSelf);
+        maps.add(mapEnemy);
+        return maps;
+    }
 
     public static List Explosion(Map<String, Object> mapSelf,
                                  Map<String, Object> mapEnemy,
@@ -143,8 +171,6 @@ public class Spells {
         List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
         int enemyHealth = Integer.parseInt(mapEnemy.get("health").toString());
         int selfHealth = Integer.parseInt(mapSelf.get("health").toString());
-
-
 
         int damage = 15, damageSelf = 10;
 
@@ -170,10 +196,13 @@ public class Spells {
         ArrayList<Long> selfMana = (ArrayList<Long>) mapSelf.get("manaAmt");
         long selfRedMana = selfMana.get(0);
         long selfYellowMana = selfMana.get(1);
-        selfRedMana = selfRedMana - (2 + redAmp);
+//        long selfBlueMana = selfMana.get(2);
+        selfRedMana = selfRedMana - (1 + redAmp);
         selfYellowMana = selfYellowMana - (1 + yellowAmp);
-        selfMana.set(0,selfRedMana);
-        selfMana.set(1,selfYellowMana);
+//        selfBlueMana = selfBlueMana - (1 + blueAmp);
+        selfMana.set(0, selfRedMana);
+        selfMana.set(1, selfYellowMana);
+//        selfMana.set(2, selfBlueMana);
         mapSelf.put("manaAmt",selfMana);
 
         maps.add(mapSelf);
@@ -190,57 +219,108 @@ public class Spells {
 //        int selfSunburstHist = Integer.parseInt(mapSelf.get("sunburstHist").toString());
 //        int damage = 20;
 //
+//        if (selfSunburstHist == 1) {
+//            damage = 0;
+//        }
+//
 //        enemyHealth = enemyHealth - damage;
 //        mapEnemy.put("health", enemyHealth);
+//
+//        ArrayList<Long> selfMana = (ArrayList<Long>) mapSelf.get("manaAmt");
+//        long selfRedMana = selfMana.get(0);
+//        long selfYellowMana = selfMana.get(1);
+//        selfRedMana = selfRedMana - (1 + redAmp);
+//        selfYellowMana = selfYellowMana - (1 + yellowAmp);
+//        selfMana.set(1, selfRedMana);
+//        selfMana.set(2, selfYellowMana);
+//        mapSelf.put("manaAmt",selfMana);
+//
 //        mapSelf.put("sunburstHist", "1");
 //        maps.add(mapSelf);
 //        maps.add(mapEnemy);
 //        return maps;
 //    }
 
-//    public static List ManaCombustion(Map<String, Object> mapSelf,
-//                                 Map<String, Object> mapEnemy,
-//                                 int redAmp,
-//                                 int blueAmp) {
-//        List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
-//        int enemyHealth = Integer.parseInt(mapEnemy.get("health").toString());
-//        int damage = 6;
-//
-//        if (redAmp == 1) {
-//            damage = 6;
-//        }
-//        else if (redAmp == 2) {
-//            damage = 8;
-//        }
-//
-//        enemyHealth = enemyHealth - damage;
-//        mapEnemy.put("health", enemyHealth);
-//        maps.add(mapSelf);
-//        maps.add(mapEnemy);
-//        return maps;
-//    }
+    public static List ManaCombustion(Map<String, Object> mapSelf,
+                                 Map<String, Object> mapEnemy,
+                                 int redAmp,
+                                 int blueAmp) {
+        List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
+        int enemyHealth = Integer.parseInt(mapEnemy.get("health").toString());
+        int damage = 3;
+        ArrayList<Long> enemyMana = (ArrayList<Long>) mapEnemy.get("manaAmt");
+        int enemyManaSum = (int) (enemyMana.get(0) + enemyMana.get(1) + enemyMana.get(2));
 
-//    public static List ForcedExtraction(Map<String, Object> mapSelf,
-//                                 Map<String, Object> mapEnemy,
-//                                 int redAmp,
-//                                 int blueAmp) {
-//        List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
-//        int enemyHealth = Integer.parseInt(mapEnemy.get("health").toString());
-//        int damage = 5;
-//
-//        if (redAmp == 1) {
-//            damage = 7;
-//        }
-//        else if (redAmp == 2) {
-//            damage = 10;
-//        }
-//
-//        enemyHealth = enemyHealth - damage;
-//        mapEnemy.put("health", enemyHealth);
-//        maps.add(mapSelf);
-//        maps.add(mapEnemy);
-//        return maps;
-//    }
+        if (redAmp == 1) {
+            damage = 4;
+        }
+        else if (redAmp == 2) {
+            damage = 5;
+        }
+        damage = damage * enemyManaSum;
+
+        enemyHealth = enemyHealth - damage;
+        mapEnemy.put("health", enemyHealth);
+
+        ArrayList<Long> selfMana = (ArrayList<Long>) mapSelf.get("manaAmt");
+        long selfRedMana = selfMana.get(0);
+        long selfBlueMana = selfMana.get(2);
+        selfRedMana = selfRedMana - (2 + redAmp);
+        selfBlueMana = selfBlueMana - (1 + blueAmp);
+        selfMana.set(0, selfRedMana);
+        selfMana.set(2, selfBlueMana);
+        mapSelf.put("manaAmt",selfMana);
+
+        maps.add(mapSelf);
+        maps.add(mapEnemy);
+        return maps;
+    }
+
+    public static List ForcedExtraction(Map<String, Object> mapSelf,
+                                 Map<String, Object> mapEnemy,
+                                 int redAmp,
+                                 int blueAmp) {
+        List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
+        int enemyHealth = Integer.parseInt(mapEnemy.get("health").toString());
+        int damage = 5;
+
+        if (redAmp == 1) {
+            damage = 7;
+        }
+        else if (redAmp == 2) {
+            damage = 10;
+        }
+
+        enemyHealth = enemyHealth - damage;
+        mapEnemy.put("health", enemyHealth);
+
+        ArrayList<Long> enemyMana = (ArrayList<Long>) mapEnemy.get("manaAmt");
+        ArrayList<Long> selfMana = (ArrayList<Long>) mapSelf.get("manaAmt");
+        int steal = 0, found = 0;
+        Random randomSteal = new Random();
+        while (found == 0){
+            steal = randomSteal.nextInt(3) + 1;
+            long tryEnemyMana = enemyMana.get(steal);
+            if (tryEnemyMana > 0) {
+                found = 1;
+                enemyMana.set(steal, tryEnemyMana - 1);
+            }
+        }
+
+        selfMana.set(steal, selfMana.get(steal) + 1);
+
+        long selfRedMana = selfMana.get(0);
+        long selfBlueMana = selfMana.get(2);
+        selfRedMana = selfRedMana - (1 + redAmp);
+        selfBlueMana = selfBlueMana - (2 + blueAmp);
+        selfMana.set(0, selfRedMana);
+        selfMana.set(2, selfBlueMana);
+        mapSelf.put("manaAmt",selfMana);
+
+        maps.add(mapSelf);
+        maps.add(mapEnemy);
+        return maps;
+    }
 
 //    public static List TransformerBolt(Map<String, Object> mapSelf,
 //                                 Map<String, Object> mapEnemy,

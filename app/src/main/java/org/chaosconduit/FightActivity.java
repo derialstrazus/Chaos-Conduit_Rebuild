@@ -220,7 +220,7 @@ public class FightActivity extends ActionBarActivity {
 
                         pushPlayerMapstoDB();
 
-                        if (mana1 > 3){
+                        if (mana1 >= 3){
                             spell_111.setEnabled(true);
                             spell_111.setImageResource(R.drawable.s02_flare_small);
                         }
@@ -390,36 +390,92 @@ public class FightActivity extends ActionBarActivity {
                             permission = 0;
                             gamesRef.child(ID).child("lastSpell").setValue("Bolt");
                             break;
-//                        case "333":
-//                            Spells.Enlighten(mapSelf, mapEnemy, 0);
-//                            permission = 0;
-//                            break;
+                        case "333":
+                            maps = Spells.Enlighten(mapSelf, mapEnemy, 0);
+                            if(player.equals("1")){
+                                player1Map = maps.get(0);
+                                player2Map = maps.get(1);
+                            }else{
+                                player2Map = maps.get(0);
+                                player1Map = maps.get(1);
+                            }
+                            permission = 0;
+                            break;
                         case "112":
-                            Spells.Explosion(mapSelf, mapEnemy, 0, 0);
+                            maps = Spells.Explosion(mapSelf, mapEnemy, 0, 0);
+                            if(player.equals("1")){
+                                player1Map = maps.get(0);
+                                player2Map = maps.get(1);
+                            }else{
+                                player2Map = maps.get(0);
+                                player1Map = maps.get(1);
+                            }
                             permission = 0;
                             break;
 //                        case "122":
-//                            Spells.Suburst(mapSelf, mapEnemy, 0, 0);
+//                            maps = Spells.Sunburst(mapSelf, mapEnemy, 0, 0);
+//                            if(player.equals("1")){
+//                                player1Map = maps.get(0);
+//                                player2Map = maps.get(1);
+//                            }else{
+//                                player2Map = maps.get(0);
+//                                player1Map = maps.get(1);
+//                            }
 //                            permission = 0;
 //                            break;
-//                        case "113":
-//                            Spells.ManaCombustion(mapSelf, mapEnemy, 0, 0);
-//                            permission = 0;
-//                            break;
-//                        case "133":
-//                            Spells.ForcedExtraction(mapSelf, mapEnemy, 0, 0);
-//                            permission = 0;
-//                            break;
+                        case "113":
+                            maps = Spells.ManaCombustion(mapSelf, mapEnemy, 0, 0);
+                            if(player.equals("1")){
+                                player1Map = maps.get(0);
+                                player2Map = maps.get(1);
+                            }else{
+                                player2Map = maps.get(0);
+                                player1Map = maps.get(1);
+                            }
+                            permission = 0;
+                            break;
+                        case "133":
+                            maps = Spells.ForcedExtraction(mapSelf, mapEnemy, 0, 0);
+                            if(player.equals("1")){
+                                player1Map = maps.get(0);
+                                player2Map = maps.get(1);
+                            }else{
+                                player2Map = maps.get(0);
+                                player1Map = maps.get(1);
+                            }
+                            permission = 0;
+                            break;
 //                        case "223":
-//                            Spells.TransformerBolt(mapSelf, mapEnemy, 0);
+//                            maps = Spells.TransformerBolt(mapSelf, mapEnemy, 0, 0);
+//                            if(player.equals("1")){
+//                                player1Map = maps.get(0);
+//                                player2Map = maps.get(1);
+//                            }else{
+//                                player2Map = maps.get(0);
+//                                player1Map = maps.get(1);
+//                            }
 //                            permission = 0;
 //                            break;
 //                        case "233":
-//                            Spells.ElectricPulse(mapSelf, mapEnemy, 0, 0);
+//                            maps = Spells.ElectricPulse(mapSelf, mapEnemy, 0, 0);
+//                            if(player.equals("1")){
+//                                player1Map = maps.get(0);
+//                                player2Map = maps.get(1);
+//                            }else{
+//                                player2Map = maps.get(0);
+//                                player1Map = maps.get(1);
+//                            }
 //                            permission = 0;
 //                            break;
 //                        case "123":
-//                            Spells.Overtap(mapSelf, mapEnemy, 0, 0, 0);
+//                            maps = Spells.Overtap(mapSelf, mapEnemy, 0, 0, 0);
+//                            if(player.equals("1")){
+//                                player1Map = maps.get(0);
+//                                player2Map = maps.get(1);
+//                            }else{
+//                                player2Map = maps.get(0);
+//                                player1Map = maps.get(1);
+//                            }
 //                            permission = 0;
 //                            break;
                     }
@@ -511,7 +567,7 @@ public class FightActivity extends ActionBarActivity {
             public void onClick(View v) {
                 mainSpellReady.setImageResource(R.drawable.s05_enlighten);
                 mainSpellName.setText("Enlighten");
-                mainSpellDesc.setText("Increase max mana pool by 1(B2)");
+                mainSpellDesc.setText("Gain 7 mana.");
                 manaCost1.setImageResource(R.drawable.ml_blue_small);
                 manaCost2.setImageResource(R.drawable.ml_blue_small);
                 manaCost3.setImageResource(R.drawable.ml_blue_small);
@@ -523,7 +579,7 @@ public class FightActivity extends ActionBarActivity {
             public void onClick(View v) {
                 mainSpellReady.setImageResource(R.drawable.s13_manacombust);
                 mainSpellName.setText("Mana Combustion");
-                mainSpellDesc.setText("Deal 3(R4)(R5) damage for each mana present in target's mana pool.  Target removes 0(U1)(U2) mana from his pool.");
+                mainSpellDesc.setText("Deal 3(R4)(R5) damage for each mana present in target's mana pool.");
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_red_small);
                 manaCost3.setImageResource(R.drawable.ml_blue_small);
