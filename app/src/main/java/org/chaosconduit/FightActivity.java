@@ -28,7 +28,7 @@ import java.util.Random;
 public class FightActivity extends ActionBarActivity {
 
     boolean start = true;
-    int permission = 1;     // 1 is permission allowed, 0 is not allowed, ie enemy turn.
+    int permission;     // 1 is permission allowed, 0 is not allowed, ie enemy turn.
     TextView enemyHealth, selfHealth;
     TextView selfMana1, selfMana2, selfMana3;
     Firebase firebase, gamesRef;
@@ -122,21 +122,29 @@ public class FightActivity extends ActionBarActivity {
                     updatePlayerMapsFromDB();
                     permission = 1;
                     selfAttack.setEnabled(true);
-                    if(start == false) {
-                        Map<String, Object> map;
-                        if (player.equals("1")) {
-                            map = player1Map;
-                        } else {
-                            map = player2Map;
-                        }
 
-
-                        int currentHP = Integer.parseInt(map.get("health").toString());
-                        selfHealth.setText(Integer.toString(currentHP));
-                    }
-                    start = false;
+//                    if(start == false) {
+//                        Map<String, Object> map;
+//                        if (player.equals("1")) {
+//                            map = player1Map;
+//                        } else {
+//                            map = player2Map;
+//                        }
+//                        int currentHP = Integer.parseInt(map.get("health").toString());
+//                        selfHealth.setText(Integer.toString(currentHP));
+//                    }
+//                    start = false;
                     //alert player it's his turn
-                    Toast.makeText(getBaseContext(), "It's your turn.", Toast.LENGTH_LONG).show();
+                    Map<String, Object> map;
+                    if (player.equals("1")) {
+                        map = player1Map;
+                    } else {
+                        map = player2Map;
+                    }
+                    int currentHP = Integer.parseInt(map.get("health").toString());
+                    selfHealth.setText(Integer.toString(currentHP));
+
+                    Toast.makeText(getBaseContext(), "It's your turn.", Toast.LENGTH_SHORT).show();
 
                     //Map<String,Object> mana =(Map<String,Object>) player1Map.get("manaAmt");
                     //int mana1 = Integer.parseInt(mana.get("0").toString());
@@ -179,22 +187,24 @@ public class FightActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (permission == 1) {
-                    Map<String,Object> map;
-                    if(player.equals("2")){
-                        map = player1Map;
+                    Map<String,Object> mapSelf, mapEnemy;
+                    if(player.equals("1")){
+                        mapSelf = player1Map;
+                        mapEnemy = player2Map;
                     }else{
-                        map = player2Map;
+                        mapSelf = player2Map;
+                        mapEnemy = player1Map;
                     }
 
 
                     int damage = 3;
-                    int currentHP = Integer.parseInt(map.get("health").toString());//Integer.parseInt(enemyHealth.getText().toString());
-                    int finalHP = currentHP - damage;
-                    map.put("health",finalHP);
+                    int currentEnemyHP = Integer.parseInt(mapEnemy.get("health").toString());//Integer.parseInt(enemyHealth.getText().toString());
+                    int finalEnemyHP = currentEnemyHP - damage;
+                    mapEnemy.put("health",finalEnemyHP);
 
                     pushPlayerMapstoDB();
                     //String send = Integer.toString(finalHP);
-                    enemyHealth.setText(Integer.toString(finalHP));
+                    enemyHealth.setText(Integer.toString(finalEnemyHP));
                     gamesRef.child(ID).child("turn").setValue(enemy);
                     selfAttack.setEnabled(false);
                     permission = 0;
