@@ -57,16 +57,16 @@ public class FightActivity extends ActionBarActivity {
         final Button selfAttack = (Button) findViewById(R.id.buttonAttack);
         Button enemyPass = (Button) findViewById(R.id.enemyButtonPass);
 
-        ImageButton spell_111 = (ImageButton) findViewById(R.id.spellFlareButton);   //Flare
-        ImageButton spell_112 = (ImageButton) findViewById(R.id.spellExploButton);     //Explo
-        ImageButton spell_122 = (ImageButton) findViewById(R.id.spellSunburstButton);   //Sunburst
-        ImageButton spell_222 = (ImageButton) findViewById(R.id.spellBoltButton);   //Bolt
-        ImageButton spell_223 = (ImageButton) findViewById(R.id.spellTransformerButton);     //Transformer
-        ImageButton spell_233 = (ImageButton) findViewById(R.id.spellPulseButton);   //Pulse
-        ImageButton spell_333 = (ImageButton) findViewById(R.id.spellEnlightenButton);   //Enlighten
-        ImageButton spell_133 = (ImageButton) findViewById(R.id.spellExtractButton);   //Extract
-        ImageButton spell_113 = (ImageButton) findViewById(R.id.spellManacombustButton);   //Manacombust
-        ImageButton spell_123 = (ImageButton) findViewById(R.id.spellOvertapButton);   //Overtap
+        final ImageButton spell_111 = (ImageButton) findViewById(R.id.spellFlareButton);   //Flare
+        final ImageButton spell_112 = (ImageButton) findViewById(R.id.spellExploButton);     //Explo
+        final ImageButton spell_122 = (ImageButton) findViewById(R.id.spellSunburstButton);   //Sunburst
+        final ImageButton spell_222 = (ImageButton) findViewById(R.id.spellBoltButton);   //Bolt
+        final ImageButton spell_223 = (ImageButton) findViewById(R.id.spellTransformerButton);     //Transformer
+        final ImageButton spell_233 = (ImageButton) findViewById(R.id.spellPulseButton);   //Pulse
+        final ImageButton spell_333 = (ImageButton) findViewById(R.id.spellEnlightenButton);   //Enlighten
+        final ImageButton spell_133 = (ImageButton) findViewById(R.id.spellExtractButton);   //Extract
+        final ImageButton spell_113 = (ImageButton) findViewById(R.id.spellManacombustButton);   //Manacombust
+        final ImageButton spell_123 = (ImageButton) findViewById(R.id.spellOvertapButton);   //Overtap
         final ImageButton mainSpellReady = (ImageButton) findViewById(R.id.highlightSpellButton);
         final TextView mainSpellName = (TextView) findViewById(R.id.highlightSpellName);
         final TextView mainSpellDesc = (TextView) findViewById(R.id.highlightSpellDesc);
@@ -182,7 +182,7 @@ public class FightActivity extends ActionBarActivity {
                         spell_111.setImageResource(R.drawable.s02_flare_small);
                     }
                     else {
-                        spell_111.setEnabled(flase);
+                        spell_111.setEnabled(false);
                         spell_111.setImageResource(R.drawable.s02_flare_dim);
                     }
                     /*
