@@ -51,7 +51,7 @@ public class FightActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fight);
-        Button selfAttack = (Button) findViewById(R.id.buttonAttack);
+        final Button selfAttack = (Button) findViewById(R.id.buttonAttack);
         Button enemyPass = (Button) findViewById(R.id.enemyButtonPass);
 
         ImageButton spell_111 = (ImageButton) findViewById(R.id.spellFlareButton);   //Flare
@@ -64,6 +64,9 @@ public class FightActivity extends ActionBarActivity {
         ImageButton spell_133 = (ImageButton) findViewById(R.id.spellExtractButton);   //Extract
         ImageButton spell_113 = (ImageButton) findViewById(R.id.spellManacombustButton);   //Manacombust
         ImageButton spell_123 = (ImageButton) findViewById(R.id.spellOvertapButton);   //Overtap
+        final ImageButton mainSpell = (ImageButton) findViewById(R.id.highlightSpellButton);   //Overtap
+        final TextView mainSpellName = (TextView) findViewById(R.id.highlightSpellName);
+        final TextView mainSpellDesc = (TextView) findViewById(R.id.highlightSpellDesc);
 
         enemyHealth = (TextView) findViewById(R.id.enemyHP);
         enemyHealth.setText(Integer.toString(60));
@@ -110,6 +113,7 @@ public class FightActivity extends ActionBarActivity {
                     //YOUR NEW TURN STARTS!
                     //updatePlayerMapsFromDB();
                     permission = 1;
+                    selfAttack.setEnabled(true);
                     //alert player it's his turn
                     Toast.makeText(getBaseContext(), "It's your turn.", Toast.LENGTH_LONG).show();
                     int mana1 = Integer.parseInt(selfMana1.getText().toString());
@@ -159,8 +163,22 @@ public class FightActivity extends ActionBarActivity {
                     int finalHP = currentHP - damage;
                     //String send = Integer.toString(finalHP);
                     enemyHealth.setText(Integer.toString(finalHP));
-                    permission = 0;
                     gamesRef.child(ID).child("turn").setValue(enemy);
+                    selfAttack.setEnabled(false);
+                    permission = 0;
+                }
+            }
+        });
+
+        spell_111.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainSpell.setImageResource(R.drawable.s02_flare);
+                mainSpellName.setText("Flare");
+                mainSpellDesc.setText("Deal 6(R8)(R10) damage.  There is a 33% chance that the same amplification of Flare will be cast again for free.");
+                if (permission == 1){
+                    //set active spell to main
+                    permission = 1;
                 }
             }
         });
