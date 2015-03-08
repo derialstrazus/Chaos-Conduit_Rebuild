@@ -42,11 +42,8 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
     }
 
     public void matchFound(String ID){
-        Log.w("TESTING ID",ID);
+        Log.w("TESTING ID FOUND",ID);
         Intent intent = new Intent(getBaseContext(), FightActivity.class);
-        Firebase newGame = firebase.child("games").child(ID);
-        PlayerData p2 = new PlayerData();
-        newGame.child("player2").setValue(p2.toMap());
         intent.putExtra("ID", ID);
         intent.putExtra("Player", "2");
         startActivity(intent);
@@ -62,7 +59,7 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
         Firebase gamesRef = firebase.child("games");
         GameInfo gi = new GameInfo(UID);
         final String ID = gamesRef.push().getKey();//.setValue(gi.toMap());
-        Log.w("TESTING ID",ID);
+        Log.w("TESTING ID CREATED",ID);
         gamesRef.child(ID).setValue(gi.toMap());
         Intent intent = new Intent(getBaseContext(), WaitMatchActivity.class);
         intent.putExtra("ID", ID);
@@ -82,9 +79,10 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
                 for (DataSnapshot ds : iterator) {
                     String p2 = ds.child("status").getValue().toString();
                     if (p2.equals("open")) {
-                        gamesRef.child(ds.getKey()).child("player2").setValue(UID);
+                        PlayerData player2 = new PlayerData();
+                        gamesRef.child(ds.getKey()).child("player2").setValue(player2.toMap());
                         gamesRef.child(ds.getKey()).child("status").setValue("closed");
-                        matchFound(gamesRef.child(ds.getKey()).getKey().toString().replace(".",""));
+                        matchFound(gamesRef.child(ds.getKey()).getKey().toString().replace(".", ""));
                         return;
                     }
                 }

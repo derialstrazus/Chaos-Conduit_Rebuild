@@ -41,6 +41,7 @@ public class FightActivity extends ActionBarActivity {
     }
 
     public void setPlayer2Map(Map<String,Object> map){
+        Log.w("MAP TEST", "PLAYER 2");
         player2Map = map;
     }
 
@@ -78,6 +79,7 @@ public class FightActivity extends ActionBarActivity {
         selfMana3.setText(Integer.toString(0));
         final String ID = getIntent().getStringExtra("ID");
         gameID = ID;
+        Log.w("GAME ID in FIGHT", gameID);
 
 
 
@@ -99,9 +101,6 @@ public class FightActivity extends ActionBarActivity {
             enemyFace.setImageResource(R.drawable.invoker_right);
             selfFace.setImageResource(R.drawable.invoker_left2);
         }
-
-
-        updatePlayerMapsFromDB();
 
         //Log.w("Test MAPPING", player1Map.toString());
         //Log.w("Test MAPPING", player2Map.get("games").toString());
@@ -183,7 +182,7 @@ public class FightActivity extends ActionBarActivity {
             }
         });
 
-        spell_111.setOnClickListener(new View.OnClickListener() {
+        spell_112.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mainSpell.setImageResource(R.drawable.s09_explo);
@@ -228,6 +227,9 @@ public class FightActivity extends ActionBarActivity {
                 }
             }
         });*/
+
+        updatePlayerMapsFromDB();
+
     }
 
 
