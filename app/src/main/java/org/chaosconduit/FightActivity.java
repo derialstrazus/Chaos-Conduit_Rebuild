@@ -27,8 +27,9 @@ import java.util.Random;
 
 public class FightActivity extends ActionBarActivity {
 
+    boolean start = true;
     int permission = 1;     // 1 is permission allowed, 0 is not allowed, ie enemy turn.
-    TextView enemyHealth;
+    TextView enemyHealth, selfHealth;
     TextView selfMana1, selfMana2, selfMana3;
     Firebase firebase, gamesRef;
     String player, enemy;
@@ -77,6 +78,8 @@ public class FightActivity extends ActionBarActivity {
 
         enemyHealth = (TextView) findViewById(R.id.enemyHP);
         enemyHealth.setText(Integer.toString(60));
+        selfHealth = (TextView) findViewById(R.id.selfHP);
+        selfHealth.setText(Integer.toString(60));
         selfMana1 = (TextView) findViewById(R.id.selfMana1);
         selfMana2 = (TextView) findViewById(R.id.selfMana2);
         selfMana3 = (TextView) findViewById(R.id.selfMana3);
@@ -116,9 +119,22 @@ public class FightActivity extends ActionBarActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue().toString().equals(player)) {
                     //YOUR NEW TURN STARTS!
-                    //updatePlayerMapsFromDB();
+                    updatePlayerMapsFromDB();
                     permission = 1;
                     selfAttack.setEnabled(true);
+                    if(start == false) {
+                        Map<String, Object> map;
+                        if (player.equals("1")) {
+                            map = player1Map;
+                        } else {
+                            map = player2Map;
+                        }
+
+
+                        int currentHP = Integer.parseInt(map.get("health").toString());
+                        selfHealth.setText(Integer.toString(currentHP));
+                    }
+                    start = false;
                     //alert player it's his turn
                     Toast.makeText(getBaseContext(), "It's your turn.", Toast.LENGTH_LONG).show();
 
@@ -172,7 +188,7 @@ public class FightActivity extends ActionBarActivity {
 
 
                     int damage = 3;
-                    int currentHP = (int) map.get("health");//Integer.parseInt(enemyHealth.getText().toString());
+                    int currentHP = Integer.parseInt(map.get("health").toString());//Integer.parseInt(enemyHealth.getText().toString());
                     int finalHP = currentHP - damage;
                     map.put("health",finalHP);
 
