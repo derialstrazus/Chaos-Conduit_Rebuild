@@ -395,6 +395,10 @@ public class FightActivity extends ActionBarActivity {
 //                            permission = 0;
 //                            break;
                     }
+                    pushPlayerMapstoDB();
+                    gamesRef.child(ID).child("turn").setValue(enemy);
+                    selfAttack.setEnabled(false);
+                    permission = 0;
                 }
             }
         });
