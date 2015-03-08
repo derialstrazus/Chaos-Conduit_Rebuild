@@ -15,7 +15,7 @@
             android:id="@+id/enemyFace"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/invoker_right" />
+            android:src="@drawable/invoker_right2" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -56,47 +56,187 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Flare"
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/spellBoltButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/s03_bolt_small"
+            android:background="#ffcfcfcf" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/spellTransformerButton"
+            android:layout_below="@+id/spellBoltButton"
+            android:layout_alignEnd="@+id/spellBoltButton"
+            android:src="@drawable/s27_transformer_small"
+            android:background="#ffcfcfcf" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/spellPulseButton"
+            android:layout_below="@+id/spellTransformerButton"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/s28_pulse_small"
+            android:background="#ffcfcfcf" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/spellEnlightenButton"
+            android:layout_below="@+id/spellPulseButton"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/s05_enlighten_small"
+            android:background="#ffcfcfcf" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/spellSunburstButton"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/spellBoltButton"
+            android:src="@drawable/s10_suburst_small"
+            android:background="#ffcfcfcf" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/spellExploButton"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/spellSunburstButton"
+            android:src="@drawable/s09_explo_small"
+            android:background="#ffcfcfcf" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             android:id="@+id/spellFlareButton"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_toStartOf="@+id/spellExploButton"
+            android:src="@drawable/s02_flare_small"
+            android:background="#ffcfcfcf" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bolt"
-            android:id="@+id/spellBoltButton"
-            android:layout_below="@+id/spellFlareButton"
-            android:layout_alignParentEnd="true" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enlighten"
-            android:id="@+id/spellEnlightenButton"
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/spellOvertapButton"
             android:layout_below="@+id/spellBoltButton"
-            android:layout_alignEnd="@+id/spellBoltButton" />
+            android:layout_toStartOf="@+id/spellBoltButton"
+            android:src="@drawable/s42_overtap_small"
+            android:background="#ffcfcfcf" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/spellManacombustButton"
+            android:layout_below="@+id/spellExploButton"
+            android:layout_toStartOf="@+id/spellOvertapButton"
+            android:src="@drawable/s13_manacombust_small"
+            android:background="#ffcfcfcf" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/spellExtractButton"
+            android:layout_below="@+id/spellOvertapButton"
+            android:layout_toStartOf="@+id/spellPulseButton"
+            android:src="@drawable/s14_forcedextract_small"
+            android:background="#ffcfcfcf" />
+
+        <ImageButton
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/highlightSpellButton"
+            android:src="@drawable/s02_flare"
+            android:paddingLeft="10dp"
+            android:layout_alignBottom="@+id/spellExtractButton"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spell Name"
+            android:textStyle="bold"
+            android:id="@+id/highlightSpellName"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/spellFlareButton"
+            android:layout_above="@+id/highlightSpellButton" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spell Description.  This spell kills people"
+            android:id="@+id/highlightSpellDesc"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/spellEnlightenButton"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/imageView2" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:src="@drawable/s02_flare" />
+            android:layout_below="@+id/spellOvertapButton"
+            android:layout_toEndOf="@+id/highlightSpellButton"
+            android:src="@drawable/ml_red_small"
+            android:padding="2dp" />
 
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="This spell kills people"
-            android:id="@+id/currentSpellText"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="57dp"
-            android:textSize="25dp" />
+            android:id="@+id/imageView2"
+            android:layout_below="@+id/imageView"
+            android:layout_toEndOf="@+id/highlightSpellButton"
+            android:src="@drawable/ml_red_small"
+            android:padding="2dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:layout_below="@+id/spellOvertapButton"
+            android:layout_toEndOf="@+id/imageView"
+            android:src="@drawable/ml_red_small"
+            android:padding="2dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView4"
+            android:layout_below="@+id/spellTransformerButton"
+            android:layout_toEndOf="@+id/imageView3"
+            android:src="@drawable/ml_red_small"
+            android:padding="2dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView5"
+            android:layout_alignTop="@+id/imageView2"
+            android:layout_alignStart="@+id/imageView3"
+            android:src="@drawable/ml_red_small"
+            android:padding="2dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView6"
+            android:layout_alignTop="@+id/imageView5"
+            android:layout_toEndOf="@+id/imageView5"
+            android:src="@drawable/ml_gray_small"
+            android:padding="2dp" />
+
     </RelativeLayout>
 
     <RelativeLayout

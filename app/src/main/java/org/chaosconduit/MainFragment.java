@@ -35,12 +35,12 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         Context c;
         Intent intent;
         switch (v.getId()) {
-            case R.id.button2:
+            case R.id.button:
                 c = getActivity();
                 intent = new Intent(c, FightActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.button:
+            case R.id.button2:
                 c = getActivity();
                 intent = new Intent(c, MatchmakingActivity.class);
                 startActivity(intent);

@@ -59,7 +59,7 @@
         <ImageButton
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:id="@+id/imageButton"
+            android:id="@+id/spellBoltButton"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:src="@drawable/s03_bolt_small" />
@@ -67,41 +67,41 @@
         <ImageButton
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:id="@+id/imageButton2"
-            android:layout_below="@+id/imageButton"
-            android:layout_alignEnd="@+id/imageButton"
+            android:id="@+id/spellTransformerButton"
+            android:layout_below="@+id/spellBoltButton"
+            android:layout_alignEnd="@+id/spellBoltButton"
             android:src="@drawable/s27_transformer_small" />
 
         <ImageButton
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:id="@+id/imageButton3"
-            android:layout_below="@+id/imageButton2"
+            android:id="@+id/spellPulseButton"
+            android:layout_below="@+id/spellTransformerButton"
             android:layout_alignParentEnd="true"
             android:src="@drawable/s28_pulse_small" />
 
         <ImageButton
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:id="@+id/imageButton4"
-            android:layout_below="@+id/imageButton3"
+            android:id="@+id/spellEnlightenButton"
+            android:layout_below="@+id/spellPulseButton"
             android:layout_alignParentEnd="true"
             android:src="@drawable/s05_enlighten_small" />
 
         <ImageButton
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:id="@+id/imageButton5"
+            android:id="@+id/spellSunburstButton"
             android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/imageButton"
+            android:layout_toStartOf="@+id/spellBoltButton"
             android:src="@drawable/s10_suburst_small" />
 
         <ImageButton
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:id="@+id/imageButton6"
+            android:id="@+id/spellExploButton"
             android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/imageButton5"
+            android:layout_toStartOf="@+id/spellSunburstButton"
             android:src="@drawable/s09_explo_small" />
 
         <ImageButton
@@ -109,39 +109,39 @@
             android:layout_height="65dp"
             android:id="@+id/imageButton7"
             android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/imageButton6"
+            android:layout_toStartOf="@+id/spellExploButton"
             android:src="@drawable/s02_flare_small" />
 
         <ImageButton
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:id="@+id/imageButton8"
-            android:layout_below="@+id/imageButton"
-            android:layout_toStartOf="@+id/imageButton"
+            android:id="@+id/spellOvertapButton"
+            android:layout_below="@+id/spellBoltButton"
+            android:layout_toStartOf="@+id/spellBoltButton"
             android:src="@drawable/s42_overtap_small" />
 
         <ImageButton
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:id="@+id/imageButton9"
-            android:layout_below="@+id/imageButton6"
-            android:layout_toStartOf="@+id/imageButton8"
+            android:layout_below="@+id/spellExploButton"
+            android:layout_toStartOf="@+id/spellOvertapButton"
             android:src="@drawable/s13_manacombust_small" />
 
         <ImageButton
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:id="@+id/imageButton10"
-            android:layout_below="@+id/imageButton8"
-            android:layout_toStartOf="@+id/imageButton3"
+            android:id="@+id/spellExtractButton"
+            android:layout_below="@+id/spellOvertapButton"
+            android:layout_toStartOf="@+id/spellPulseButton"
             android:src="@drawable/s14_forcedextract_small" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView2"
+            android:id="@+id/highlightSpellView"
             android:src="@drawable/s02_flare"
-            android:layout_alignBottom="@+id/imageButton10"
+            android:layout_alignBottom="@+id/spellExtractButton"
             android:layout_alignParentStart="true"
             android:paddingLeft="10dp" />
 
@@ -149,11 +149,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Spell Name"
-            android:id="@+id/textView3"
-            android:layout_below="@+id/imageView2"
+            android:id="@+id/highlightSpellName"
+            android:layout_below="@+id/highlightSpellView"
             android:layout_alignParentStart="true"
             android:paddingLeft="10dp"
-            android:layout_toStartOf="@+id/imageButton4"
+            android:layout_toStartOf="@+id/spellEnlightenButton"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
             android:paddingBottom="5dp" />
@@ -163,9 +163,9 @@
             android:layout_height="wrap_content"
             android:text="Spell Description"
             android:id="@+id/textView4"
-            android:layout_below="@+id/textView3"
+            android:layout_below="@+id/highlightSpellName"
             android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/imageButton4"
+            android:layout_toStartOf="@+id/spellEnlightenButton"
             android:layout_alignParentBottom="true"
             android:paddingLeft="10dp"
             android:paddingTop="5dp"

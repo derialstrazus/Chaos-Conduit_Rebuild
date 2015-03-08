@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +53,18 @@ public class FightActivity extends ActionBarActivity {
         setContentView(R.layout.activity_fight);
         Button selfAttack = (Button) findViewById(R.id.buttonAttack);
         Button enemyPass = (Button) findViewById(R.id.enemyButtonPass);
+
+        ImageButton spell_111 = (ImageButton) findViewById(R.id.spellFlareButton);   //Flare
+        ImageButton spell_112 = (ImageButton) findViewById(R.id.spellExploButton);     //Explo
+        ImageButton spell_122 = (ImageButton) findViewById(R.id.spellSunburstButton);   //Sunburst
+        ImageButton spell_222 = (ImageButton) findViewById(R.id.spellBoltButton);   //Bolt
+        ImageButton spell_223 = (ImageButton) findViewById(R.id.spellTransformerButton);     //Transformer
+        ImageButton spell_233 = (ImageButton) findViewById(R.id.spellPulseButton);   //Pulse
+        ImageButton spell_333 = (ImageButton) findViewById(R.id.spellEnlightenButton);   //Enlighten
+        ImageButton spell_133 = (ImageButton) findViewById(R.id.spellExtractButton);   //Extract
+        ImageButton spell_113 = (ImageButton) findViewById(R.id.spellManacombustButton);   //Manacombust
+        ImageButton spell_123 = (ImageButton) findViewById(R.id.spellOvertapButton);   //Overtap
+
         enemyHealth = (TextView) findViewById(R.id.enemyHP);
         enemyHealth.setText(Integer.toString(60));
         selfMana1 = (TextView) findViewById(R.id.selfMana1);
@@ -90,17 +103,19 @@ public class FightActivity extends ActionBarActivity {
         //Log.w("Test MAPPING", player1Map.toString());
         //Log.w("Test MAPPING", player2Map.get("games").toString());
 
-
-        Button Flare = (Button) findViewById(R.id.spellFlareButton);
-
         gamesRef.child(ID).child("turn").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue().toString().equals(player)) {
+                    //YOUR NEW TURN STARTS!
+                    //updatePlayerMapsFromDB();
                     permission = 1;
                     //alert player it's his turn
                     Toast.makeText(getBaseContext(), "It's your turn.", Toast.LENGTH_LONG).show();
                     int mana1 = Integer.parseInt(selfMana1.getText().toString());
+                    //Map<String,Object> mana =(Map<String,Object>) player1Map.get("manaAmt");
+
+                    //int mana1 = Integer.parseInt(mana.get("0").toString());
                     int mana2 = Integer.parseInt(selfMana2.getText().toString());
                     int mana3 = Integer.parseInt(selfMana3.getText().toString());
                     //start Roll mana
