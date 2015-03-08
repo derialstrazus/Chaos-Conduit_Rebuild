@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    style="@style/baseColors">
 
     <TextView
         android:layout_width="wrap_content"
@@ -11,21 +12,22 @@
         android:id="@+id/textView2"
         android:textSize="20dp"
         android:layout_marginTop="100dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Create Match"
         android:id="@+id/create_match"
         android:layout_gravity="center_horizontal" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Find Match"
         android:id="@+id/find_match"
-        android:layout_gravity="center_horizontal" />
+        android:layout_marginTop="5dp" />
 
 
 </LinearLayout>
