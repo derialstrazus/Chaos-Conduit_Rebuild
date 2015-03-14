@@ -355,7 +355,7 @@ public class Spells {
                                  int anyAmp) {
         List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
         int enemyHealth = Integer.parseInt(mapEnemy.get("health").toString());
-        int damage = 5;
+        int damage = 2;
         ArrayList<Long> selfMana = (ArrayList<Long>) mapSelf.get("manaAmt");
         long selfRedMana = selfMana.get(0);
         long selfYellowMana = selfMana.get(1);
