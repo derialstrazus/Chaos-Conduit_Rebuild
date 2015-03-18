@@ -21,7 +21,7 @@
     </style>
 
     <style name="baseColors">
-        <item name="android:background">#9999ff</item>
+        <item name="android:background">#ff5c7c93</item>
     </style>
 
     <style name="GenericProgressBackground" parent="android:Theme">

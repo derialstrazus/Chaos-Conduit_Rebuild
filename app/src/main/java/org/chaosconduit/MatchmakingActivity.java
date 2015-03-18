@@ -34,11 +34,12 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
         AuthData auth = firebase.getAuth();
         UID = auth.getUid();
 
+        Button singlePlayer = (Button) findViewById(R.id.single_player);
         Button findMatch = (Button) findViewById(R.id.find_match);
         Button createMatch = (Button) findViewById(R.id.create_match);
+        singlePlayer.setOnClickListener(this);
         createMatch.setOnClickListener(this);
         findMatch.setOnClickListener(this);
-
     }
 
     public void matchFound(String ID){
@@ -53,6 +54,12 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
     public void matchNotFound(){
         Toast.makeText(getBaseContext(),"No matches found, try again later!", Toast.LENGTH_SHORT).show();
 
+    }
+
+    public void singlePlayer(){
+        Intent intent = new Intent(getBaseContext(), SingleActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void createNewMatch(){
@@ -99,8 +106,11 @@ public class MatchmakingActivity extends ActionBarActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.single_player:
+                singlePlayer();
+                break;
             case R.id.find_match:
-                findMatch();;
+                findMatch();
                 break;
             case R.id.create_match:
                 createNewMatch();

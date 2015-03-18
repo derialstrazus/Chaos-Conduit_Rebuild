@@ -7,7 +7,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.25" >
+        android:layout_weight="0.20"
+        android:background="#ffdfdfdf">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -15,43 +16,45 @@
             android:id="@+id/enemyFace"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/invoker_right" />
+            android:src="@drawable/enemy_broodmother" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="HP"
             android:id="@+id/enemyHPText"
-            android:layout_below="@+id/enemyFace"
-            android:layout_alignStart="@+id/enemyFace"
             android:textSize="20dp"
-            android:paddingTop="5dp"
-            android:paddingLeft="5dp" />
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/enemyHP"
+            android:padding="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="60"
             android:id="@+id/enemyHP"
-            android:layout_below="@+id/enemyFace"
-            android:layout_toEndOf="@+id/enemyHPText"
-            android:paddingTop="5dp"
-            android:paddingLeft="5dp"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/enemyFace"
+            android:padding="10dp" />
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pass"
-            android:id="@+id/enemyButtonPass"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:text="Enemy is idle"
+            android:id="@+id/enemyActivity"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/enemyFace"
+            android:layout_alignBottom="@+id/enemyFace"
+            android:padding="5dp"
+            android:layout_below="@+id/enemyHPText" />
+
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.50"
+        android:layout_weight="0.55"
         android:layout_alignParentTop="false"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true">
@@ -62,7 +65,8 @@
             android:id="@+id/spellBoltButton"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/s03_bolt_small" />
+            android:src="@drawable/s03_bolt_dim"
+            android:background="#ffcfcfcf" />
 
         <ImageButton
             android:layout_width="65dp"
@@ -70,7 +74,8 @@
             android:id="@+id/spellTransformerButton"
             android:layout_below="@+id/spellBoltButton"
             android:layout_alignEnd="@+id/spellBoltButton"
-            android:src="@drawable/s27_transformer_small" />
+            android:src="@drawable/s27_transformer_dim"
+            android:background="#ffcfcfcf" />
 
         <ImageButton
             android:layout_width="65dp"
@@ -78,7 +83,8 @@
             android:id="@+id/spellPulseButton"
             android:layout_below="@+id/spellTransformerButton"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/s28_pulse_small" />
+            android:src="@drawable/s28_pulse_dim"
+            android:background="#ffcfcfcf" />
 
         <ImageButton
             android:layout_width="65dp"
@@ -86,7 +92,8 @@
             android:id="@+id/spellEnlightenButton"
             android:layout_below="@+id/spellPulseButton"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/s05_enlighten_small" />
+            android:src="@drawable/s05_enlighten_dim"
+            android:background="#ffcfcfcf" />
 
         <ImageButton
             android:layout_width="65dp"
@@ -94,7 +101,8 @@
             android:id="@+id/spellSunburstButton"
             android:layout_alignParentTop="true"
             android:layout_toStartOf="@+id/spellBoltButton"
-            android:src="@drawable/s10_suburst_small" />
+            android:src="@drawable/s10_suburst_dim"
+            android:background="#ffcfcfcf" />
 
         <ImageButton
             android:layout_width="65dp"
@@ -102,15 +110,17 @@
             android:id="@+id/spellExploButton"
             android:layout_alignParentTop="true"
             android:layout_toStartOf="@+id/spellSunburstButton"
-            android:src="@drawable/s09_explo_small" />
+            android:src="@drawable/s09_explo_dim"
+            android:background="#ffcfcfcf" />
 
         <ImageButton
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:id="@+id/imageButton7"
+            android:id="@+id/spellFlareButton"
             android:layout_alignParentTop="true"
             android:layout_toStartOf="@+id/spellExploButton"
-            android:src="@drawable/s02_flare_small" />
+            android:src="@drawable/s02_flare_dim"
+            android:background="#ffcfcfcf" />
 
         <ImageButton
             android:layout_width="65dp"
@@ -118,15 +128,17 @@
             android:id="@+id/spellOvertapButton"
             android:layout_below="@+id/spellBoltButton"
             android:layout_toStartOf="@+id/spellBoltButton"
-            android:src="@drawable/s42_overtap_small" />
+            android:src="@drawable/s42_overtap_dim"
+            android:background="#ffcfcfcf" />
 
         <ImageButton
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:id="@+id/imageButton9"
+            android:id="@+id/spellManacombustButton"
             android:layout_below="@+id/spellExploButton"
             android:layout_toStartOf="@+id/spellOvertapButton"
-            android:src="@drawable/s13_manacombust_small" />
+            android:src="@drawable/s13_manacombust_dim"
+            android:background="#ffcfcfcf" />
 
         <ImageButton
             android:layout_width="65dp"
@@ -134,50 +146,107 @@
             android:id="@+id/spellExtractButton"
             android:layout_below="@+id/spellOvertapButton"
             android:layout_toStartOf="@+id/spellPulseButton"
-            android:src="@drawable/s14_forcedextract_small" />
+            android:src="@drawable/s14_forcedextract_dim"
+            android:background="#ffcfcfcf" />
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <ImageButton
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:id="@+id/highlightSpellView"
-            android:src="@drawable/s02_flare"
+            android:id="@+id/highlightSpellButton"
+            android:src="@drawable/s00_empty"
+            android:paddingLeft="10dp"
             android:layout_alignBottom="@+id/spellExtractButton"
-            android:layout_alignParentStart="true"
-            android:paddingLeft="10dp" />
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Spell Name"
+            android:textStyle="bold"
             android:id="@+id/highlightSpellName"
-            android:layout_below="@+id/highlightSpellView"
-            android:layout_alignParentStart="true"
             android:paddingLeft="10dp"
-            android:layout_toStartOf="@+id/spellEnlightenButton"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
-            android:paddingBottom="5dp" />
+            android:paddingBottom="5dp"
+            android:layout_above="@+id/highlightSpellButton"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/spellFlareButton" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Spell Description"
-            android:id="@+id/textView4"
-            android:layout_below="@+id/highlightSpellName"
+            android:text="Spell Description."
+            android:id="@+id/highlightSpellDesc"
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@+id/spellEnlightenButton"
             android:layout_alignParentBottom="true"
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
-            android:paddingBottom="5dp" />
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/highlightSpellButton" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/manaCost1"
+            android:layout_below="@+id/spellOvertapButton"
+            android:layout_toEndOf="@+id/highlightSpellButton"
+            android:src="@drawable/ml_gray_small"
+            android:padding="2dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/manaAmp1"
+            android:layout_below="@+id/manaCost1"
+            android:layout_toEndOf="@+id/highlightSpellButton"
+            android:src="@drawable/ml_gray_small"
+            android:padding="2dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/manaCost2"
+            android:layout_alignTop="@+id/manaCost1"
+            android:layout_toEndOf="@+id/manaCost1"
+            android:src="@drawable/ml_gray_small"
+            android:padding="2dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/manaCost3"
+            android:layout_alignTop="@+id/manaCost1"
+            android:layout_toEndOf="@+id/manaCost2"
+            android:src="@drawable/ml_gray_small"
+            android:padding="2dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/manaAmp2"
+            android:layout_alignTop="@+id/manaAmp1"
+            android:layout_toEndOf="@+id/manaAmp1"
+            android:src="@drawable/ml_gray_small"
+            android:padding="2dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/manaAmp3"
+            android:layout_alignTop="@+id/manaAmp2"
+            android:layout_toEndOf="@+id/manaAmp2"
+            android:src="@drawable/ml_gray_small"
+            android:padding="2dp" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.25">
+        android:layout_weight="0.25"
+        android:background="#ffdfdfdf">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -185,7 +254,8 @@
             android:id="@+id/selfFace"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:src="@drawable/invoker_left" />
+            android:src="@drawable/invoker_left"
+            android:paddingLeft="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -195,8 +265,7 @@
             android:layout_below="@+id/selfFace"
             android:layout_alignLeft="@+id/selfFace"
             android:textSize="20dp"
-            android:paddingTop="5dp"
-            android:paddingLeft="5dp" />
+            android:padding="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -205,9 +274,8 @@
             android:id="@+id/selfHP"
             android:layout_below="@+id/selfFace"
             android:layout_toEndOf="@+id/selfHPText"
-            android:paddingTop="5dp"
-            android:paddingLeft="5dp"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:padding="5dp" />
 
         <Button
             android:layout_width="wrap_content"
@@ -215,7 +283,8 @@
             android:text="Pass"
             android:id="@+id/buttonPass"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible" />
 
         <Button
             android:layout_width="wrap_content"
@@ -223,16 +292,17 @@
             android:text="Clear"
             android:id="@+id/buttonClear"
             android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/buttonPass" />
+            android:layout_toStartOf="@+id/buttonPass"
+            android:visibility="invisible" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Attack"
+            android:text="Attack (3 dmg)"
             android:id="@+id/buttonAttack"
-            android:layout_alignParentBottom="true"
-            android:layout_alignEnd="@+id/selfFace" />
+            android:layout_below="@+id/selfFace"
+            android:layout_alignStart="@+id/buttonClear" />
 
         <ImageButton
             android:layout_width="wrap_content"

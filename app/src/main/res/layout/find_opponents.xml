@@ -7,25 +7,42 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="Finding worthy opponents"
-        android:id="@+id/textView2"
-        android:textSize="20dp"
+        android:layout_height="wrap_content"
+        android:text="Hunting in the Wilds"
+        android:id="@+id/singleplayer_text"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Single Player"
+        android:id="@+id/single_player"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Finding worthy opponents"
+        android:id="@+id/multiplayer_text"
+        android:textSize="20dp"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create Match"
+        android:text="Create Multiplayer Match"
         android:id="@+id/create_match"
         android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Find Match"
+        android:text="Find Multiplayer Match"
         android:id="@+id/find_match"
         android:layout_marginTop="5dp" />
 
