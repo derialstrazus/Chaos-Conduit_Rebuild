@@ -20,7 +20,9 @@
         android:layout_height="wrap_content"
         android:text="Single Player"
         android:id="@+id/single_player"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        android:enabled="false" />
 
     <TextView
         android:layout_width="wrap_content"

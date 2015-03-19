@@ -205,7 +205,7 @@ public class LoginActivity extends ActionBarActivity {
     private void setFormToRegistration() {
         LinearLayout loginForm = (LinearLayout)findViewById(R.id.loginFrame);
         ((RelativeLayout.LayoutParams)loginForm.getLayoutParams()).addRule(RelativeLayout.CENTER_VERTICAL, 0);
-        loginForm.getLayoutParams().height = 1000;
+        loginForm.getLayoutParams().height = 400;
 
         Toast.makeText(getBaseContext(), "Hello", Toast.LENGTH_SHORT);
 

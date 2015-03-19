@@ -91,7 +91,6 @@ public class FightActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fight);
         final Button selfAttack = (Button) findViewById(R.id.buttonAttack);
-        Button enemyPass = (Button) findViewById(R.id.enemyButtonPass);
 
         final ImageButton spell_111 = (ImageButton) findViewById(R.id.spellFlareButton);   //Flare
         final ImageButton spell_112 = (ImageButton) findViewById(R.id.spellExploButton);     //Explo
