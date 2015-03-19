@@ -171,9 +171,7 @@ public class LoginActivity extends ActionBarActivity {
 
     public void setFormVisible(boolean b) {
         int visibility = b ? View.VISIBLE : View.INVISIBLE;
-        int progressVisibility = b ? View.INVISIBLE : View.VISIBLE;
 
-        findViewById(R.id.loginProgressBar).setVisibility(progressVisibility);
         findViewById(R.id.loginFrame).setVisibility(visibility);
         findViewById(R.id.loginButtonsLayout).setVisibility(visibility);
     }
@@ -205,7 +203,7 @@ public class LoginActivity extends ActionBarActivity {
     private void setFormToRegistration() {
         LinearLayout loginForm = (LinearLayout)findViewById(R.id.loginFrame);
         ((RelativeLayout.LayoutParams)loginForm.getLayoutParams()).addRule(RelativeLayout.CENTER_VERTICAL, 0);
-        loginForm.getLayoutParams().height = 400;
+        //loginForm.getLayoutParams().height = 800;
 
         Toast.makeText(getBaseContext(), "Hello", Toast.LENGTH_SHORT);
 

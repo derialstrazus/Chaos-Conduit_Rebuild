@@ -519,7 +519,7 @@ public class FightActivity extends ActionBarActivity {
             public void onClick(View v) {
                 mainSpellReady.setImageResource(R.drawable.s02_flare);
                 mainSpellName.setText("Flare");
-                mainSpellDesc.setText("Deal 6(R8)(R10) damage.  There is a 33% chance that the same amplification of Flare will be cast again for free.");
+                mainSpellDesc.setText("Deal 6 damage.  There is a 33% chance Flare will be cast again for free.");
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_red_small);
                 manaCost3.setImageResource(R.drawable.ml_red_small);
@@ -534,7 +534,7 @@ public class FightActivity extends ActionBarActivity {
             public void onClick(View v) {
                 mainSpellReady.setImageResource(R.drawable.s09_explo);
                 mainSpellName.setText("Explosion");
-                mainSpellDesc.setText("Deal 15(R20)(R25) damage to your opponent and 10(Y9)(Y7) damage to yourself.");
+                mainSpellDesc.setText("Deal 15 damage to your opponent and 10 damage to yourself.");
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_red_small);
                 manaCost3.setImageResource(R.drawable.ml_yellow_small);
@@ -551,7 +551,7 @@ public class FightActivity extends ActionBarActivity {
             public void onClick(View v) {
                 mainSpellReady.setImageResource(R.drawable.s10_suburst);
                 mainSpellName.setText("Suburst");
-                mainSpellDesc.setText("Heal 20");
+                mainSpellDesc.setText("Gain 20 health.");
                 manaCost1.setImageResource(R.drawable.ml_red_small);
                 manaCost2.setImageResource(R.drawable.ml_yellow_small);
                 manaCost3.setImageResource(R.drawable.ml_yellow_small);
@@ -566,7 +566,7 @@ public class FightActivity extends ActionBarActivity {
             public void onClick(View v) {
                 mainSpellReady.setImageResource(R.drawable.s03_bolt);
                 mainSpellName.setText("Bolt");
-                mainSpellDesc.setText("Deal 10(Y15)(Y20) damage.  This damage cannot be blocked and your opponent cannot heal next turn.");
+                mainSpellDesc.setText("Deal 10 damage.  This damage cannot be blocked and your opponent cannot heal next turn.");
                 manaCost1.setImageResource(R.drawable.ml_yellow_small);
                 manaCost2.setImageResource(R.drawable.ml_yellow_small);
                 manaCost3.setImageResource(R.drawable.ml_yellow_small);
